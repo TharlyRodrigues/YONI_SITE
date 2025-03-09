@@ -1,0 +1,290 @@
+@charset "UTF-8";
+.sombra {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+}
+
+.img-responsive {
+  width: 300px;
+  height: auto;
+  display: block;
+  position: relative;
+}
+
+.input-group input {
+  position: relative;
+  background-color: #e9e9e9;
+  color: #919191;
+  width: 100%;
+}
+
+.input-group input.form-control {
+  position: relative;
+  background-color: #e9e9e9;
+}
+
+.input-group button {
+  position: absolute;
+  border: none;
+  top: 5px;
+  right: 6px;
+  background-color: #e9e9e9;
+  border-radius: 50px;
+  color: #919191;
+  z-index: 10;
+}
+
+.input-group input:focus {
+  border: none;
+  box-shadow: none;
+  outline: none;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border-color: #ced4da;
+  color: #303030;
+}
+
+.card-infor {
+  margin: 0;
+  line-height: 1;
+  color: #ffffff;
+  font-size: 0.8rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.menu-web {
+  background-color: #ff3260;
+}
+
+.icon-menu {
+  color: var(--bs-danger);
+  border: none;
+}
+
+.nav-item .nav-link {
+  color: #ffffff;
+  z-index: 10;
+}
+
+.nav .nav-item {
+  line-height: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none !important;
+}
+
+.nav .nav-item a:hover {
+  transition: all 0.2s ease-out;
+  scale: 1.1;
+  text-decoration: none !important;
+  line-height: 0.5;
+}
+
+.sticky-element {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.header-nav {
+  background-color: var(--bs-light);
+}
+
+.nav .nav-item .nav-link {
+  font-size: 1.2rem;
+}
+
+#mobile-menu-button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+/* Estilo para o menu móvel */
+#mobile-menu {
+  position: fixed;
+  top: 0;
+  left: -100%; /* Esconde o menu fora da tela */
+  width: 300px;
+  height: 100%;
+  background: #333;
+  transition: left 0.5s ease-in-out;
+  z-index: 1000;
+}
+
+#mobile-menu.menu-open {
+  left: 0; /* Mostra o menu */
+}
+
+#mobile-menu .nav-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#mobile-menu .nav-menu .nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#mobile-menu .nav-menu .social .nav-link {
+  display: flex;
+  justify-content: space-between;
+}
+
+.fa-chevron-right {
+  margin-left: auto;
+  color: var(--bs-white);
+}
+
+#mobile-menu .nav-menu li {
+  padding: 15px;
+  border-bottom: 1px solid #444;
+}
+
+#mobile-menu .menu li a {
+  color: #fff;
+  text-decoration: none !important;
+}
+
+#mobile-menu .exit-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: right;
+  padding: 10px;
+  cursor: pointer;
+  color: var(--bs-white);
+  background-color: var(--bs-primary);
+}
+
+#mobile-menu .exit-menu a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.card {
+  height: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.coracao {
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  color: var(--bs-danger);
+  top: 1rem;
+  right: -1rem;
+  cursor: pointer;
+}
+
+.coracao {
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.coracao:active {
+  transform: scale(1.15);
+}
+
+.card-img-top {
+  max-height: 180px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.card-title {
+  min-height: 60px;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.badge {
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.price {
+  font-size: 1.5rem;
+  margin: 10px 0;
+}
+
+.btn {
+  width: 100%;
+}
+
+.row .col {
+  display: flex;
+  justify-content: center;
+}
+
+.row.items .col-lg-3:last-child {
+  margin-right: auto;
+}
+
+.btn-modal {
+  text-decoration: none;
+  cursor: pointer;
+  color: black;
+}
+
+.preco {
+  color: var(--bs-danger);
+}
+
+#pagination .page-item.active .page-link {
+  background-color: #dc3545; /* Cor de fundo ativa */
+  color: white;
+}
+
+#pagination .page-link {
+  color: #dc3545;
+  border: 1px solid rgba(0, 0, 0, 0.0941176471);
+  transition: all 0.3s;
+}
+
+#pagination .page-link:hover {
+  background-color: #dc3545;
+  color: white;
+  text-decoration: none;
+}
+
+@media (max-width: 991px) {
+  .card-infor {
+    font-size: 0.5rem;
+  }
+  .nav .nav-item .nav-link {
+    font-size: 0.8rem;
+  }
+  .img-responsive {
+    width: 200px;
+    height: auto;
+    display: block;
+    position: relative;
+  }
+  #mobile-menu-button {
+    display: block;
+  }
+  #mobile-menu {
+    display: block;
+  }
+}
