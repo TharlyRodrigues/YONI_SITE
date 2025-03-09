@@ -399,5 +399,35 @@
       "price": 19.99,
       "image": "img_produtos/Vibrador Ponto G em Formato de Golfinho em ABS You Vibe pink.jpg"
     }
+  ],
+  "combos": [
+    {
+      "id": 8,
+      "name": "Vibrador Ponto G em Formato de Golfinho em ABS You Vibe(ROXO)",
+      "description": "Quer explorar novas sensações e alcançar o máximo de prazer direto no ponto G? O Vibrador Golfinho com Ponta Curvada é o brinquedo ideal para quem deseja estimular o ponto G com precisão e intensidade. Seu design em formato de golfinho traz um toque divertido e único, enquanto sua ponta curvada, representada pela cabeça do golfinho, foi projetada para atingir o ponto G de forma fácil e eficaz. Feito em material ABS aveludado de alta qualidade, ele garante durabilidade e um toque suave, proporcionando uma experiência incrível a cada uso.",
+      "price": 19.99,
+      "image": "img_produtos/Vibrador Ponto G em Formato de Golfinho em ABS You Vibe pink.jpg"
+    },
+    {
+      "id": 8.1,
+      "name": "Vibrador Ponto G em Formato de Golfinho em ABS You Vibe(ROXO)",
+      "description": "Quer explorar novas sensações e alcançar o máximo de prazer direto no ponto G? O Vibrador Golfinho com Ponta Curvada é o brinquedo ideal para quem deseja estimular o ponto G com precisão e intensidade. Seu design em formato de golfinho traz um toque divertido e único, enquanto sua ponta curvada, representada pela cabeça do golfinho, foi projetada para atingir o ponto G de forma fácil e eficaz. Feito em material ABS aveludado de alta qualidade, ele garante durabilidade e um toque suave, proporcionando uma experiência incrível a cada uso.",
+      "price": 19.99,
+      "image": "img_produtos/Vibrador Ponto G em Formato de Golfinho em ABS You Vibe pink.jpg"
+    },
+    {
+      "id": 8.2,
+      "name": "Vibrador Ponto G em Formato de Golfinho em ABS You Vibe(ROXO)",
+      "description": "Quer explorar novas sensações e alcançar o máximo de prazer direto no ponto G? O Vibrador Golfinho com Ponta Curvada é o brinquedo ideal para quem deseja estimular o ponto G com precisão e intensidade. Seu design em formato de golfinho traz um toque divertido e único, enquanto sua ponta curvada, representada pela cabeça do golfinho, foi projetada para atingir o ponto G de forma fácil e eficaz. Feito em material ABS aveludado de alta qualidade, ele garante durabilidade e um toque suave, proporcionando uma experiência incrível a cada uso.",
+      "price": 19.99,
+      "image": "img_produtos/Vibrador Ponto G em Formato de Golfinho em ABS You Vibe pink.jpg"
+    },
+    {
+      "id": 8.3,
+      "name": "Vibrador Ponto G em Formato de Golfinho em ABS You Vibe(ROXO)",
+      "description": "Quer explorar novas sensações e alcançar o máximo de prazer direto no ponto G? O Vibrador Golfinho com Ponta Curvada é o brinquedo ideal para quem deseja estimular o ponto G com precisão e intensidade. Seu design em formato de golfinho traz um toque divertido e único, enquanto sua ponta curvada, representada pela cabeça do golfinho, foi projetada para atingir o ponto G de forma fácil e eficaz. Feito em material ABS aveludado de alta qualidade, ele garante durabilidade e um toque suave, proporcionando uma experiência incrível a cada uso.",
+      "price": 19.99,
+      "image": "img_produtos/Vibrador Ponto G em Formato de Golfinho em ABS You Vibe pink.jpg"
+    }
   ]
 }

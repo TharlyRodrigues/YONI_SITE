@@ -193,7 +193,9 @@
 }
 
 .coracao {
-  transition: transform 0.2s ease, color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
 }
 
 .coracao:active {
@@ -260,6 +262,21 @@
   color: white;
   text-decoration: none;
 }
+// slider-combos-yoni
+/* Centraliza os cards dentro de cada slide */
+.carousel-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px; /* Espaçamento entre os cards */
+}
+
+/* Ajusta o layout do carrossel */
+.carousel-inner {
+  text-align: center;
+  background-color: #303030;
+}
+// slider-combos-yoni
 
 @media (max-width: 991px) {
   .card-infor {

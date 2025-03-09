@@ -11,8 +11,73 @@ function loadItems() {
       allItems = data;
       filteredItems = [].concat(...Object.values(allItems));
       updatePage(false); // Não rola a página no carregamento inicial
+
+      // Verifica se há a chave 'combos' no JSON e carrega os itens
+      if (data.combos) {
+        loadSliderItems(data.combos);
+      }
     })
     .catch((error) => console.error("Erro ao carregar os produtos:", error));
+}
+
+function loadSliderItems(comboItems) {
+  const sliderContainer = document.querySelector(
+    "#slider-combos-yoni .carousel-inner"
+  );
+  sliderContainer.innerHTML = ""; // Limpa os itens anteriores
+
+  for (let i = 0; i < comboItems.length; i += 4) {
+    const slideItems = comboItems.slice(i, i + 4); // Pega 4 itens por vez
+    const slideItem = document.createElement("div");
+    slideItem.classList.add(
+      "carousel-item",
+      "d-flex",
+      "justify-content-center",
+      "align-items-center"
+    );
+
+    slideItems.forEach((item) => {
+      const card = `
+        <div class="card" style="width: 18rem; text-align: center">
+          <i class="fa-regular fa-heart coracao fa-2x"></i>
+          <img src="${item.image}" class="card-img-top" alt="${item.name}" />
+          <div class="card-body">
+            <h5 class="card-title" style="margin-bottom: 0; font-weight: bold;">
+              ${item.name}
+            </h5>
+            <p class="badge bg-danger text-white desconto">25% OFF no PIX</p>
+            <div class="text-warning mb-2">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+            <p style="color: black; margin-bottom: 0;">De: R$ <s>${(
+              item.price * 1.25
+            ).toFixed(2)}</s></p>
+            <p style="margin-bottom: 0; font-weight: bold;">Por:</p>
+            <p class="h5 preco">R$ ${item.price.toFixed(2)}
+              <span class="text-muted" style="font-size: 0.8rem">no pix</span>
+            </p>
+            <a class="btn-modal" onclick='openModal(${JSON.stringify(item)})'>
+              <i class="fa-solid fa-eye"></i> Detalhes
+            </a>
+            <button class="btn btn-danger">
+              <i class="fa-solid fa-cart-shopping"></i> COMPRAR
+            </button>
+          </div>
+        </div>
+      `;
+      slideItem.innerHTML += card;
+    });
+
+    // Adiciona o slide ao carousel
+    sliderContainer.appendChild(slideItem);
+  }
+
+  // Torna o primeiro slide ativo
+  sliderContainer.firstElementChild.classList.add("active");
 }
 
 // Função para exibir os itens na tela
