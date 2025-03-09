@@ -176,10 +176,11 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 20px;
+  padding: 10px;
   border: none;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   background-color: #fff;
+  line-height: 1;
 }
 
 .coracao {
@@ -266,6 +267,53 @@
   background-color: #dc3545;
   color: white;
   text-decoration: none;
+}
+
+/* Adicione este CSS ao seu arquivo de estilo */
+#slider-combos-yoni {
+  position: relative; /* Garante que os botões sejam posicionados em relação ao carousel */
+}
+
+#slider-combos-yoni .carousel-control-prev,
+#slider-combos-yoni .carousel-control-next {
+  position: absolute; /* Posiciona os botões absolutamente dentro do carousel */
+  top: 50%; /* Centraliza verticalmente */
+  transform: translateY(-50%); /* Ajusta o posicionamento vertical */
+  width: auto; /* Largura automática para os botões */
+  border: none; /* Remove bordas */
+  padding: 10px; /* Espaçamento interno */
+  z-index: 10; /* Garante que os botões fiquem acima dos itens do carousel */
+}
+
+#slider-combos-yoni .carousel-control-prev {
+  left: 0; /* Colado à esquerda */
+}
+
+#slider-combos-yoni .carousel-control-next {
+  right: 0; /* Colado à direita */
+}
+
+/* Estilo para os ícones dos botões */
+#slider-combos-yoni .carousel-control-prev-icon,
+#slider-combos-yoni .carousel-control-next-icon {
+  filter: brightness(0) invert(0);
+}
+
+/* Estilo para os indicadores */
+#slider-combos-yoni .carousel-indicators {
+  bottom: -10px; /* Ajusta a posição dos indicadores */
+}
+
+#slider-combos-yoni .carousel-indicators button {
+  width: 30px;
+  height: 3px;
+  background-color: #ccc; /* Cor padrão */
+  border: none;
+  margin: 0 5px;
+}
+
+#slider-combos-yoni .carousel-indicators button.active {
+  background-color: #444444; /* Cor do indicador ativo */
 }
 
 @media (max-width: 991px) {

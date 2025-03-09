@@ -23,24 +23,46 @@ function loadSliderItems(comboItems) {
   const sliderContainer = document.querySelector(
     "#slider-combos-yoni .carousel-inner"
   );
+  const indicatorsContainer = document.querySelector(
+    "#slider-combos-yoni .carousel-indicators"
+  );
   sliderContainer.innerHTML = ""; // Limpa os itens anteriores
+  indicatorsContainer.innerHTML = ""; // Limpa os indicadores anteriores
 
-  // Divide os itens em grupos de 4
-  for (let i = 0; i < comboItems.length; i += 4) {
-    const slideItems = comboItems.slice(i, i + 4); // Pega 4 itens por vez
+  // Define o número de itens por slide com base no tamanho da tela
+  let itemsPerSlide = 4; // Padrão para telas grandes
+  if (window.innerWidth < 992) {
+    // Telas médias
+    itemsPerSlide = 2;
+  }
+  if (window.innerWidth < 768) {
+    // Telas pequenas
+    itemsPerSlide = 1;
+  }
+
+  // Divide os itens em grupos com base no número de itens por slide
+  for (let i = 0; i < comboItems.length; i += itemsPerSlide) {
+    const slideItems = comboItems.slice(i, i + itemsPerSlide); // Pega os itens por slide
     const slideItem = document.createElement("div");
     slideItem.classList.add("carousel-item");
 
-    // Cria uma linha para os 4 cards
+    // Cria uma linha para os cards
     const row = document.createElement("div");
-    row.classList.add("row", "justify-content-center"); // Espaçamento entre os cards
+    row.classList.add("row", "justify-content-center", "no-gutters");
 
     slideItems.forEach((item) => {
       const col = document.createElement("div");
-      col.classList.add("col", "col-12", "col-md-3"); // Responsividade (4 cards por slide)
+      // Ajusta o tamanho das colunas com base no número de itens por slide
+      if (itemsPerSlide === 4) {
+        col.classList.add("col", "col-12", "col-md-3");
+      } else if (itemsPerSlide === 2) {
+        col.classList.add("col", "col-12", "col-md-6");
+      } else if (itemsPerSlide === 1) {
+        col.classList.add("col", "col-12");
+      }
 
       const card = `
-        <div class="card" style="width: 18rem; style="text-align: center">
+        <div class="card" text-align: center;">
           <img src="${item.image}" class="card-img-top" alt="${item.name}" />
           <div class="card-body">
             <h5 class="card-title" style="margin-bottom: 0; font-weight: bold;">
@@ -60,7 +82,7 @@ function loadSliderItems(comboItems) {
               <span class="text-muted" style="font-size: 0.8rem">no pix</span>
             </p>
             <a class="btn-modal" onclick='openModal(${JSON.stringify(item)})'>
-              <i class="fa-solid fa-eye"></i> Detalhes
+              <i class="fa-solid fa-eye btn-detalhes"></i> Detalhes
             </a>
             <button class="btn btn-danger">
               <i class="fa-solid fa-cart-shopping"></i> COMPRAR
@@ -74,6 +96,16 @@ function loadSliderItems(comboItems) {
 
     slideItem.appendChild(row);
     sliderContainer.appendChild(slideItem);
+
+    // Cria os indicadores
+    const indicator = document.createElement("button");
+    indicator.setAttribute("type", "button");
+    indicator.setAttribute("data-bs-target", "#slider-combos-yoni");
+    indicator.setAttribute("data-bs-slide-to", i / itemsPerSlide);
+    if (i === 0) {
+      indicator.classList.add("active"); // Torna o primeiro indicador ativo
+    }
+    indicatorsContainer.appendChild(indicator);
   }
 
   // Torna o primeiro slide ativo
@@ -94,14 +126,14 @@ function displayItems(itemsToDisplay) {
     itemElement.classList.add(
       "col-12",
       "col-sm-6",
-      "col-md-4",
+      "col-md-6",
       "col-lg-3",
       "mb-4",
       "d-flex",
       "justify-content-center"
     );
     itemElement.innerHTML = `
-      <div class="card" style="width: 18rem; text-align: center">
+      <div class="card" text-align: center">
         <i class="fa-regular fa-heart coracao fa-2x"></i>
         <img src="${item.image}" class="card-img-top" alt="${item.name}" />
         <div class="card-body">
