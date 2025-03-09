@@ -268,20 +268,6 @@
   text-decoration: none;
 }
 
-/* Centraliza os cards dentro de cada slide */
-.carousel-item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 40px; /* Espaçamento entre os cards */
-}
-
-/* Ajusta o layout do carrossel */
-.carousel-inner {
-  text-align: center;
-  background-color: #303030;
-}
-
 @media (max-width: 991px) {
   .card-infor {
     font-size: 0.5rem;

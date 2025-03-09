@@ -10,9 +10,7 @@ function loadItems() {
     .then((data) => {
       allItems = data;
       filteredItems = [].concat(...Object.values(allItems));
-      updatePage(false); // Não rola a página no carregamento inicial
-
-      // Verifica se há a chave 'combos' no JSON e carrega os itens
+      updatePage(false);
       if (data.combos) {
         loadSliderItems(data.combos);
       }
@@ -20,26 +18,29 @@ function loadItems() {
     .catch((error) => console.error("Erro ao carregar os produtos:", error));
 }
 
+// Função para carregar os itens do slider
 function loadSliderItems(comboItems) {
   const sliderContainer = document.querySelector(
     "#slider-combos-yoni .carousel-inner"
   );
   sliderContainer.innerHTML = ""; // Limpa os itens anteriores
 
+  // Divide os itens em grupos de 4
   for (let i = 0; i < comboItems.length; i += 4) {
     const slideItems = comboItems.slice(i, i + 4); // Pega 4 itens por vez
     const slideItem = document.createElement("div");
-    slideItem.classList.add(
-      "carousel-item",
-      "d-flex",
-      "justify-content-center",
-      "align-items-center"
-    );
+    slideItem.classList.add("carousel-item");
+
+    // Cria uma linha para os 4 cards
+    const row = document.createElement("div");
+    row.classList.add("row", "justify-content-center"); // Espaçamento entre os cards
 
     slideItems.forEach((item) => {
+      const col = document.createElement("div");
+      col.classList.add("col", "col-12", "col-md-3"); // Responsividade (4 cards por slide)
+
       const card = `
-        <div class="card" style="width: 18rem; text-align: center">
-          <i class="fa-regular fa-heart coracao fa-2x"></i>
+        <div class="card" style="width: 18rem; style="text-align: center">
           <img src="${item.image}" class="card-img-top" alt="${item.name}" />
           <div class="card-body">
             <h5 class="card-title" style="margin-bottom: 0; font-weight: bold;">
@@ -53,9 +54,7 @@ function loadSliderItems(comboItems) {
               <i class="fa-solid fa-star"></i>
               <i class="fa-solid fa-star-half-stroke"></i>
             </div>
-            <p style="color: black; margin-bottom: 0;">De: R$ <s>${(
-              item.price * 1.25
-            ).toFixed(2)}</s></p>
+            <p style="color: black; margin-bottom: 0;">De: R$ <s>${(item.price * 1.25).toFixed(2)}</s></p>
             <p style="margin-bottom: 0; font-weight: bold;">Por:</p>
             <p class="h5 preco">R$ ${item.price.toFixed(2)}
               <span class="text-muted" style="font-size: 0.8rem">no pix</span>
@@ -69,15 +68,21 @@ function loadSliderItems(comboItems) {
           </div>
         </div>
       `;
-      slideItem.innerHTML += card;
+      col.innerHTML = card;
+      row.appendChild(col);
     });
 
-    // Adiciona o slide ao carousel
+    slideItem.appendChild(row);
     sliderContainer.appendChild(slideItem);
   }
 
   // Torna o primeiro slide ativo
   sliderContainer.firstElementChild.classList.add("active");
+}
+
+// Exemplo de função de modal (pode ser personalizada conforme necessário)
+function openModal(item) {
+  console.log(item); // Aqui você pode abrir um modal com mais informações sobre o item
 }
 
 // Função para exibir os itens na tela

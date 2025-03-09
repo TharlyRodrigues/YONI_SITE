@@ -262,22 +262,8 @@
   color: white;
   text-decoration: none;
 }
-// slider-combos-yoni
-/* Centraliza os cards dentro de cada slide */
-.carousel-item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 40px; /* Espaçamento entre os cards */
-}
 
-/* Ajusta o layout do carrossel */
-.carousel-inner {
-  text-align: center;
-  background-color: #303030;
-}
-// slider-combos-yoni
-
+// slider combos
 @media (max-width: 991px) {
   .card-infor {
     font-size: 0.5rem;
