@@ -178,7 +178,7 @@
   justify-content: space-between;
   padding: 10px;
   border: none;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   background-color: #fff;
   line-height: 1;
 }
@@ -202,7 +202,7 @@
 }
 
 .card-img-top {
-  max-height: 180px;
+  max-height: 200px;
   object-fit: contain;
   margin-bottom: 15px;
 }
@@ -245,11 +245,17 @@
 .btn-modal {
   text-decoration: none;
   cursor: pointer;
-  color: black;
+  color: rgb(61, 61, 61);
+  margin-bottom: 10px;
+}
+
+.btn-modal:hover {
+  color: var(--bs-danger);
 }
 
 .preco {
   color: var(--bs-danger);
+  margin-bottom: 3px;
 }
 
 #pagination .page-item.active .page-link {

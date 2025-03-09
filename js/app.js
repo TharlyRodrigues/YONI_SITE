@@ -82,7 +82,7 @@ function loadSliderItems(comboItems) {
               <span class="text-muted" style="font-size: 0.8rem">no pix</span>
             </p>
             <a class="btn-modal" onclick='openModal(${JSON.stringify(item)})'>
-              <i class="fa-solid fa-eye btn-detalhes"></i> Detalhes
+              <i class="fa-solid fa-eye btn-detalhes"></i> Mais Detalhes
             </a>
             <button class="btn btn-danger">
               <i class="fa-solid fa-cart-shopping"></i> COMPRAR
@@ -156,7 +156,7 @@ function displayItems(itemsToDisplay) {
             <span class="text-muted" style="font-size: 0.8rem">no pix</span>
           </p>
           <a class="btn-modal" onclick='openModal(${JSON.stringify(item)})'>
-            <i class="fa-solid fa-eye"></i> Detalhes
+            <i class="fa-solid fa-eye"></i> Mais Detalhes 
           </a>
           <button class="btn btn-danger">
             <i class="fa-solid fa-cart-shopping"></i> COMPRAR
@@ -168,12 +168,14 @@ function displayItems(itemsToDisplay) {
   });
 
   // Delegação de evento para os ícones de coração
-  itemsContainer.addEventListener("click", (event) => {
-    if (event.target.classList.contains("coracao")) {
-      event.target.classList.toggle("fa-regular");
-      event.target.classList.toggle("fa-solid");
-    }
-  });
+  if (itemsContainer) {
+    itemsContainer.addEventListener("click", (event) => {
+      if (event.target.classList.contains("coracao")) {
+        event.target.classList.toggle("fa-regular");
+        event.target.classList.toggle("fa-solid");
+      }
+    });
+  }
 }
 
 // Função para abrir o modal com informações detalhadas do item
