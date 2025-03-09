@@ -110,11 +110,11 @@ function loadSliderItems(comboItems) {
 
   // Torna o primeiro slide ativo
   sliderContainer.firstElementChild.classList.add("active");
-}
 
-// Exemplo de função de modal (pode ser personalizada conforme necessário)
-function openModal(item) {
-  console.log(item); // Aqui você pode abrir um modal com mais informações sobre o item
+  // Exemplo de função de modal (pode ser personalizada conforme necessário)
+  function openModal(item) {
+    console.log(item); // Aqui você pode abrir um modal com mais informações sobre o item
+  }
 }
 
 // Função para exibir os itens na tela
