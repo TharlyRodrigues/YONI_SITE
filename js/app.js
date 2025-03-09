@@ -116,8 +116,6 @@ function loadSliderItems(comboItems) {
     console.log(item); // Aqui você pode abrir um modal com mais informações sobre o item
   }
 }
-
-// Função para exibir os itens na tela
 // Função para exibir os itens na tela
 function displayItems(itemsToDisplay) {
   const itemsContainer = document.querySelector(".row.produtos-item");
