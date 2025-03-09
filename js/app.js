@@ -118,9 +118,11 @@ function openModal(item) {
 }
 
 // Função para exibir os itens na tela
+// Função para exibir os itens na tela
 function displayItems(itemsToDisplay) {
   const itemsContainer = document.querySelector(".row.produtos-item");
   itemsContainer.innerHTML = "";
+
   itemsToDisplay.forEach((item) => {
     const itemElement = document.createElement("div");
     itemElement.classList.add(
@@ -132,8 +134,9 @@ function displayItems(itemsToDisplay) {
       "d-flex",
       "justify-content-center"
     );
+
     itemElement.innerHTML = `
-      <div class="card" text-align: center">
+      <div class="card"text-align: center; position: relative;">
         <i class="fa-regular fa-heart coracao fa-2x"></i>
         <img src="${item.image}" class="card-img-top" alt="${item.name}" />
         <div class="card-body">
@@ -148,9 +151,7 @@ function displayItems(itemsToDisplay) {
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star-half-stroke"></i>
           </div>
-          <p style="color: black; margin-bottom: 0;">De: R$ <s>${(
-            item.price * 1.25
-          ).toFixed(2)}</s></p>
+          <p style="color: black; margin-bottom: 0;">De: R$ <s>${(item.price * 1.25).toFixed(2)}</s></p>
           <p style="margin-bottom: 0; font-weight: bold;">Por:</p>
           <p class="h5 preco">R$ ${item.price.toFixed(2)}
             <span class="text-muted" style="font-size: 0.8rem">no pix</span>
@@ -164,19 +165,18 @@ function displayItems(itemsToDisplay) {
         </div>
       </div>
     `;
+
     itemsContainer.appendChild(itemElement);
   });
-
-  // Delegação de evento para os ícones de coração
-  if (itemsContainer) {
-    itemsContainer.addEventListener("click", (event) => {
-      if (event.target.classList.contains("coracao")) {
-        event.target.classList.toggle("fa-regular");
-        event.target.classList.toggle("fa-solid");
-      }
-    });
-  }
 }
+
+// Delegação de evento para os ícones de coração (executa apenas uma vez)
+document.addEventListener("click", (event) => {
+  if (event.target.classList.contains("coracao")) {
+    event.target.classList.toggle("fa-regular");
+    event.target.classList.toggle("fa-solid");
+  }
+});
 
 // Função para abrir o modal com informações detalhadas do item
 function openModal(item) {
