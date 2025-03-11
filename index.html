@@ -110,19 +110,24 @@
         <li class="nav-item">
           <a href="#"
             class="nav-link">
-            Meus favoritos
-            <i class="fa-solid fa-heart  mt-2 ms-3"></i>
+            Fale conosco
+            <i class="fa-brands fa-whatsapp fa-2x  mt-2 ms-3 justify-content-center"></i>
           </a>
-          <i class="fa-solid fa-chevron-right"></i>
         </li>
         <li class="nav-item social ">
-        <span class="text-white">conheça-nos</span>
-          <a href="#" class="nav-link">
+        <span >conheça-nos</span>
+          <a href="#" class="text-white">
             <i class="fa-brands fa-facebook fa-2x"></i>         
           </a>
-          <a href="#" class="nav-link">
+          <a href="#" class="text-white">
             <i class="fa-brands fa-instagram fa-2x"></i>         
           </a>
+        </li>
+        <li>
+          <span>Horario de atendimento: 16:00 às 22:00</span>
+        </li>
+        <li class="nav-item">
+          <span>Copyright © 2024 Yoni Sexy Shop</span>
         </li>
       </ul>
     </div>
@@ -143,10 +148,13 @@
               <a href="#" class="cart-compra position-relative d-block d-md-none offset-2">
                 <i class="fa-solid fa-bag-shopping fa-2x mt-2"></i>
                 <span
-                  class="position-absolute start-100 translate-middle badge bg-danger rounded-5 values"
+                  class="position-absolute start-100 translate-middle badge bg-danger rounded-5"
                   >0</span
                 >
               </a>   
+                <a href="#" class="card-favoritos d-block d-md-none">
+                  <i class="fa-solid fa-heart fa-2x mt-2 ms-3"></i>
+                </a>  
             </div>
           </div>
           <!-- Barra de Pesquisa -->
@@ -293,9 +301,13 @@
     <!-- slider combos -->
     <div class="container">
       <div class="box-combo">
-        <p class="title-combos">Kits na área! <span>APROVEITE</span>, por tempo limitado! </p>
+        <p class="title-combos"><span><img src="icon_yoni/megaphone_7495807.png" alt="icon megaphone" width="45px" class="icon-title"></span> Kits na área! APROVEITE <span class="color">por tempo limitado!
+        </span><span><img src="icon_yoni/clock_14374484.png" alt="icon clock" width="35px" class="icon-title"></span></p>
       </div>
-      <div id="slider-combos-yoni" class="carousel slide" data-bs-ride="carousel"  data-bs-interval="2500">
+      <div class="box-temp">
+        <div class="contador vibrate" id="contador">00:00:00</div>
+      </div>
+      <div id="slider-combos-yoni" class="carousel slide mb-4" data-bs-ride="carousel"  data-bs-interval="2500">
         <!-- Indicadores -->
         <div class="carousel-indicators" id="carousel-indicators">
           <!-- Os botões dos indicadores serão gerados dinamicamente pelo JavaScript -->
@@ -397,7 +409,11 @@
     </div>
     <div class="produtos-menu">
       <div class="container">
-        <div class="row produtos-item py-4"></div>
+        <div class="title-menu">
+          <p class="text-center"><span><img src="icon_yoni/18+.png" alt="icon 18+" width="40px" class="iconmais18"></span> Todos os produtos disponíveis Yoni <span>
+            <img src="icon_yoni/18+.png" alt="icon 18+" width="40px" class="iconmais18"></span></p> 
+        </div>
+        <div class="row produtos-item"></div>
       </div>
     </div>
     <!-- Paginação -->
@@ -459,6 +475,10 @@
             </div>
           </div>
       </div>
+    </div>
+    <div class="baner-2">
+      <img src="img_yoni/BOLINHAS.png" alt="bane de bolinhas yoni" class="img-fluid">
+      <div class="color-test"></div>
     </div>
 
     <!-- menu-mobile -->

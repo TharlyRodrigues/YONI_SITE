@@ -18,3 +18,43 @@ function continuousScroll() {
 
 // Inicia o scroll contínuo
 continuousScroll();
+
+// contador de tempo
+function startTimer() {
+  const agora = new Date();
+
+  const meiaNoite = new Date();
+  meiaNoite.setHours(23, 59, 59, 999);
+
+  let tempoRestante = Math.floor((meiaNoite - agora) / 1000);
+
+  let horas = Math.floor(tempoRestante / 3600);
+  let minutos = Math.floor((tempoRestante % 3600) / 60);
+  let segundos = tempoRestante % 60;
+
+  horas = horas < 10 ? "0" + horas : horas;
+  minutos = minutos < 10 ? "0" + minutos : minutos;
+  segundos = segundos < 10 ? "0" + segundos : segundos;
+
+  document.getElementById("contador").textContent =
+    `${horas}:${minutos}:${segundos}`;
+}
+
+setInterval(startTimer, 1000);
+
+startTimer();
+
+// header scroll
+
+function userScroll() {
+  const navbar = document.querySelector(".header-nav");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+      navbar.classList.add("bg-yoni");
+    } else {
+      navbar.classList.remove("bg-yoni");
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", userScroll);

@@ -1,6 +1,6 @@
 @charset "UTF-8";
 .sombra {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
 }
 
 .img-responsive {
@@ -54,6 +54,21 @@
 
 .hidden {
   display: none;
+}
+
+.title-menu {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(to right, #ff7ca0, var(--bs-danger));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 10px 0 0 0;
+  text-transform: uppercase;
+  letter-spacing: 5px;
 }
 
 .menu-web {
@@ -116,6 +131,11 @@
   background: #333;
   transition: left 0.5s ease-in-out;
   z-index: 1000;
+  overflow-y: auto;
+}
+
+.nav-link {
+  width: 100%;
 }
 
 #mobile-menu.menu-open {
@@ -147,6 +167,7 @@
 #mobile-menu .nav-menu li {
   padding: 15px;
   border-bottom: 1px solid #444;
+  color: #fff;
 }
 
 #mobile-menu .menu li a {
@@ -275,15 +296,53 @@
   text-decoration: none;
 }
 
+.box-temp {
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(255, 255, 255);
+  margin-bottom: 20px;
+}
+
+.vibrate {
+  display: inline-block;
+  animation: vibrate 0.2s ease-in-out infinite;
+}
+
+.contador {
+  font-size: 2rem;
+  font-weight: bold;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  padding: 0 20px;
+  backface-visibility: hidden;
+  animation: background-timer 2s ease-out infinite, scale 0.9s ease-in-out infinite;
+}
+
+.icon-title,
+.iconmais18 {
+  animation: scale 2s ease-in-out infinite;
+}
+
+.color {
+  animation: colos 2s ease-in-out infinite;
+  animation-fill-mode: forwards;
+}
+
 .title-combos {
   font-size: 1.5rem;
   justify-content: center;
   text-align: center;
-  color: #dc3545;
-  padding: 10px 0;
+  color: var(--bs-primary);
+  padding: 10px 0 0 0;
   margin-bottom: 0;
   text-transform: uppercase;
   letter-spacing: 3px;
+}
+
+.title-combos span {
+  font-weight: bold;
 }
 
 /* Adicione este CSS ao seu arquivo de estilo */
@@ -318,7 +377,7 @@
 
 /* Estilo para os indicadores */
 #slider-combos-yoni .carousel-indicators {
-  bottom: -10px; /* Ajusta a posição dos indicadores */
+  bottom: -30px; /* Ajusta a posição dos indicadores */
 }
 
 #slider-combos-yoni .carousel-indicators button {
@@ -333,7 +392,76 @@
   background-color: #444444; /* Cor do indicador ativo */
 }
 
+@keyframes colos {
+  0% {
+    color: var(--bs-primary);
+  }
+  25% {
+    color: #ff3260;
+  }
+  50% {
+    color: var(--bs-primary);
+  }
+  75% {
+    color: #ff3260;
+  }
+  100% {
+    color: var(--bs-primary);
+  }
+}
+@keyframes background-timer {
+  0% {
+    background-color: #ff3e24;
+  }
+  25% {
+    background-color: #ff7c24;
+  }
+  50% {
+    background-color: #ff3e24;
+  }
+  75% {
+    background-color: #ff7c24;
+  }
+  100% {
+    background-color: #ff3e24;
+  }
+}
+@keyframes scale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes vibrate {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(5px);
+  }
+}
+.bg-yoni {
+  background-color: #fff385;
+}
+
 @media (max-width: 991px) {
+  .nav .nav-item .nav-link {
+    font-size: 2rem;
+  }
   .card-infor {
     font-size: 0.5rem;
   }
@@ -341,10 +469,12 @@
     font-size: 0.8rem;
   }
   .img-responsive {
-    width: 200px;
+    padding: 10px 0;
+    width: 150px;
     height: auto;
     display: block;
     position: relative;
+    margin-left: 1.5rem;
   }
   #mobile-menu-button {
     display: block;
