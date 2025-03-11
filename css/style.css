@@ -276,12 +276,14 @@
 }
 
 .title-combos {
-  justify-content: center;
   font-size: 1.5rem;
+  justify-content: center;
   text-align: center;
   color: #dc3545;
   padding: 10px 0;
   margin-bottom: 0;
+  text-transform: uppercase;
+  letter-spacing: 3px;
 }
 
 /* Adicione este CSS ao seu arquivo de estilo */
