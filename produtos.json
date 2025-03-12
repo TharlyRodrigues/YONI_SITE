@@ -5,56 +5,64 @@
       "name": "Gel Térmico Beijável Yummy 15ml Sexy Fantasy - MORANGO",
       "description": "O Yummy Gel Térmico Beijável é o segredo que vai transformar seus momentos de prazer em experiências inesquecíveis. Com uma variedade deliciosa de sabores, como morango, menta, chocolate, caipirinha e amarula, este gel é perfeito para aqueles que desejam adicionar um toque especial ao sexo oral, tornando cada momento ainda mais gostoso e divertido.",
       "price": 11.99,
-      "image": "img_produtos/YUM4129-Morango_1.jpg"
+      "image": "img_produtos/YUM4129-Morango_1.jpg",
+      "estoque": 0
     },
     {
       "id": 0.1,
       "name": "Gel Térmico Beijável Yummy 15ml Sexy Fantasy -MENTA",
       "description": "O Yummy Gel Térmico Beijável é o segredo que vai transformar seus momentos de prazer em experiências inesquecíveis. Com uma variedade deliciosa de sabores, como morango, menta, chocolate, caipirinha e amarula, este gel é perfeito para aqueles que desejam adicionar um toque especial ao sexo oral, tornando cada momento ainda mais gostoso e divertido.",
       "price": 11.99,
-      "image": "img_produtos/YUM4127-Menta_1.jpg"
+      "image": "img_produtos/YUM4127-Menta_1.jpg",
+      "estoque": 0
     },
     {
       "id": 0.2,
       "name": "Gel Térmico Beijável Yummy 15ml Sexy Fantasy - ICE-MENTA",
       "description": "O Yummy Gel Térmico Beijável é o segredo que vai transformar seus momentos de prazer em experiências inesquecíveis. Com uma variedade deliciosa de sabores, como morango, menta, chocolate, caipirinha e amarula, este gel é perfeito para aqueles que desejam adicionar um toque especial ao sexo oral, tornando cada momento ainda mais gostoso e divertido.",
       "price": 11.99,
-      "image": "img_produtos/YUM4134-Ice-Menta_1.jpg"
+      "image": "img_produtos/YUM4134-Ice-Menta_1.jpg",
+      "estoque": 1
     },
     {
       "id": 0.3,
       "name": "Gel Térmico Beijável Yummy 15ml Sexy Fantasy - CHOCOLATE",
       "description": "O Yummy Gel Térmico Beijável é o segredo que vai transformar seus momentos de prazer em experiências inesquecíveis. Com uma variedade deliciosa de sabores, como morango, menta, chocolate, caipirinha e amarula, este gel é perfeito para aqueles que desejam adicionar um toque especial ao sexo oral, tornando cada momento ainda mais gostoso e divertido.",
       "price": 11.99,
-      "image": "img_produtos/YUM4136-Chocolate_1.jpg"
+      "image": "img_produtos/YUM4136-Chocolate_1.jpg",
+      "estoque": 1
     },
     {
       "id": 0.4,
       "name": "Gel Térmico Beijável Yummy 15ml Sexy Fantasy - CAIPIRINHA",
       "description": "O Yummy Gel Térmico Beijável é o segredo que vai transformar seus momentos de prazer em experiências inesquecíveis. Com uma variedade deliciosa de sabores, como morango, menta, chocolate, caipirinha e amarula, este gel é perfeito para aqueles que desejam adicionar um toque especial ao sexo oral, tornando cada momento ainda mais gostoso e divertido.",
       "price": 11.99,
-      "image": "img_produtos/YUM4138-Caipirinha_1.jpg"
+      "image": "img_produtos/YUM4138-Caipirinha_1.jpg",
+      "estoque": 1
     },
     {
       "id": 0.5,
       "name": "Love Lub Bubbalove Lubrificante Corporal Beijável 60g La Pimienta - MORANGO",
       "description": "O Love Lub Bubbalove Lubrificante da La Pimenta tem o poder de deixar suas relações mais gostosas em cada estímulo. Desfrute de todas as possibilidades que este produto maravilhoso tem, seja no sexo oral ou anal você terá alta lubrificação á base de água, efeito deslizante para seu anal ser perfeito, utilize com seus sex toys ou em suas carícias durante a masturbação",
       "price": 17.99,
-      "image": "img_produtos/L460-Morango_1.jpg"
+      "image": "img_produtos/L460-Morango_1.jpg",
+      "estoque": 1
     },
     {
       "id": 0.6,
       "name": "Love Lub Bubbalove Lubrificante Corporal 60g La Pimienta - TUTTI-FRUTI",
       "description": "O Love Lub Bubbalove Lubrificante da La Pimenta tem o poder de deixar suas relações mais gostosas em cada estímulo. Desfrute de todas as possibilidades que este produto maravilhoso tem, seja no sexo oral ou anal você terá alta lubrificação á base de água, efeito deslizante para seu anal ser perfeito, utilize com seus sex toys ou em suas carícias durante a masturbação",
       "price": 17.99,
-      "image": "img_produtos/L461-Tutti-Frutti_1.jpg"
+      "image": "img_produtos/L461-Tutti-Frutti_1.jpg",
+      "estoque": 1
     },
     {
       "id": 0.7,
       "name": "Love Lub Bubbalove Lubrificante Corporal Beijável 60g La Pimienta - MENTA",
       "description": "O Love Lub Bubbalove Lubrificante da La Pimenta tem o poder de deixar suas relações mais gostosas em cada estímulo. Desfrute de todas as possibilidades que este produto maravilhoso tem, seja no sexo oral ou anal você terá alta lubrificação á base de água, efeito deslizante para seu anal ser perfeito, utilize com seus sex toys ou em suas carícias durante a masturbação",
       "price": 17.99,
-      "image": "img_produtos/L462-Menta_1.jpg"
+      "image": "img_produtos/L462-Menta_1.jpg",
+      "estoque": 1
     }
   ],
   "lubrificantes": [
@@ -63,14 +71,16 @@
       "name": "Gel Lubrificante Tradicional em Sachê 5g Rilex - NEUTRO",
       "description": "O Gel Lubrificante íntimo tradicional da Rilex oferece lubrificação para a sua relação, conforto e segurança sem perder a sensibilidade e reduz o atrito da pele. É indicado para facilitar a penetração, pode ser utilizado também para massagens sensuais, em próteses ou preservativos com pouca ou sem lubrificação.",
       "price": 1.99,
-      "image": "img_produtos/Gel Lubrificante Tradicional em Sachê 5g Rilex neutro.jpg"
+      "image": "img_produtos/Gel Lubrificante Tradicional em Sachê 5g Rilex neutro.jpg",
+      "estoque": 1
     },
     {
       "id": 1.1,
       "name": "Gel Lubrificante Tradicional em Sachê 5g Rilex - MORANGO",
       "description": "O Gel Lubrificante íntimo tradicional da Rilex oferece lubrificação para a sua relação, conforto e segurança sem perder a sensibilidade e reduz o atrito da pele. É indicado para facilitar a penetração, pode ser utilizado também para massagens sensuais, em próteses ou preservativos com pouca ou sem lubrificação.",
       "price": 1.99,
-      "image": "img_produtos/Gel Lubrificante Tradicional em Sachê 5g Rilex morango.jpg"
+      "image": "img_produtos/Gel Lubrificante Tradicional em Sachê 5g Rilex morango.jpg",
+      "estoque": 1
     },
     {
       "id": 1.2,
@@ -84,21 +94,24 @@
       "name": "Love Lub Bubbalove Lubrificante Corporal 60g La Pimienta - MORANGO",
       "description": "O Love Lub Bubbalove Lubrificante da La Pimenta tem o poder de deixar suas relações mais gostosas em cada estímulo. Desfrute de todas as possibilidades que este produto maravilhoso tem, seja no sexo oral ou anal você terá alta lubrificação á base de água, efeito deslizante para seu anal ser perfeito, utilize com seus sex toys ou em suas carícias durante a masturbação",
       "price": 17.99,
-      "image": "img_produtos/L460-Morango_1.jpg"
+      "image": "img_produtos/L460-Morango_1.jpg",
+      "estoque": 1
     },
     {
       "id": 1.4,
       "name": "Love Lub Bubbalove Lubrificante Corporal Bei 60g La Pimienta - TUTTI-FRUTI",
       "description": "O Love Lub Bubbalove Lubrificante da La Pimenta tem o poder de deixar suas relações mais gostosas em cada estímulo. Desfrute de todas as possibilidades que este produto maravilhoso tem, seja no sexo oral ou anal você terá alta lubrificação á base de água, efeito deslizante para seu anal ser perfeito, utilize com seus sex toys ou em suas carícias durante a masturbação",
       "price": 17.99,
-      "image": "img_produtos/L461-Tutti-Frutti_1.jpg"
+      "image": "img_produtos/L461-Tutti-Frutti_1.jpg",
+      "estoque": 1
     },
     {
       "id": 1.5,
       "name": "Love Lub Bubbalove Lubrificante Corporal Beijável 60g La Pimienta - MENTA",
       "description": "O Love Lub Bubbalove Lubrificante da La Pimenta tem o poder de deixar suas relações mais gostosas em cada estímulo. Desfrute de todas as possibilidades que este produto maravilhoso tem, seja no sexo oral ou anal você terá alta lubrificação á base de água, efeito deslizante para seu anal ser perfeito, utilize com seus sex toys ou em suas carícias durante a masturbação",
       "price": 17.99,
-      "image": "img_produtos/L462-Menta_1.jpg"
+      "image": "img_produtos/L462-Menta_1.jpg",
+      "estoque": 1
     }
   ],
   "bolinhas": [
@@ -107,91 +120,104 @@
       "name": "Hot Ball Xana Loka Esquenta Esfria e Vibra Hot Flowers",
       "description": "A Hot Ball Xana Loka proporciona uma combinação única de aquecer, esfriar e vibrar, tornando-se a parceira ideal para inovar e surpreender na hora H. Além de tudo isso, ela também auxilia na lubrificação, garantindo momentos ainda mais gostosos e sem desconforto.",
       "price": 16.99,
-      "image": "img_produtos/Hot Ball Xana Loka.jpg"
+      "image": "img_produtos/Hot Ball Xana Loka.jpg",
+      "estoque": 1
     },
     {
       "id": 2.1,
       "name": "Hot Ball Bolinha Explosiva Hot Flowers - MENTA",
       "description": "A Hot Ball Beija Muito é o produto perfeito para quem quer experimentar novas sensações de uma maneira simples e envolvente. Essas bolinhas lubrificantes são ideais para adicionar um toque especial ao momento íntimo, proporcionando hidratação e lubrificação com um aroma irresistível. Feitas com óleo vegetal e enriquecidas com vitamina E, elas garantem uma pele macia e sedosa, deixando tudo ainda mais prazeroso.",
       "price": 11.99,
-      "image": "img_produtos/Hot Ball Bolinha menta.jpg"
+      "image": "img_produtos/Hot Ball Bolinha menta.jpg",
+      "estoque": 1
     },
     {
       "id": 2.2,
       "name": "Hot Ball Bolinha Explosiva Hot Flowers - MORANGO",
       "description": "A Hot Ball Beija Muito é o produto perfeito para quem quer experimentar novas sensações de uma maneira simples e envolvente. Essas bolinhas lubrificantes são ideais para adicionar um toque especial ao momento íntimo, proporcionando hidratação e lubrificação com um aroma irresistível. Feitas com óleo vegetal e enriquecidas com vitamina E, elas garantem uma pele macia e sedosa, deixando tudo ainda mais prazeroso.",
       "price": 11.99,
-      "image": "img_produtos/Hot Ball Bolinha morango.jpg"
+      "image": "img_produtos/Hot Ball Bolinha morango.jpg",
+      "estoque": 1
     },
     {
       "id": 2.3,
       "name": "Hot Ball Bolinha Explosiva Hot Flowers - CHOCOLATE",
       "description": "A Hot Ball Beija Muito é o produto perfeito para quem quer experimentar novas sensações de uma maneira simples e envolvente. Essas bolinhas lubrificantes são ideais para adicionar um toque especial ao momento íntimo, proporcionando hidratação e lubrificação com um aroma irresistível. Feitas com óleo vegetal e enriquecidas com vitamina E, elas garantem uma pele macia e sedosa, deixando tudo ainda mais prazeroso.",
       "price": 11.99,
-      "image": "img_produtos/Hot Ball Bolinha chocolate.jpg"
+      "image": "img_produtos/Hot Ball Bolinha chocolate.jpg",
+      "estoque": 1
     },
     {
       "id": 2.4,
       "name": "Hot Ball Bolinha Explosiva Hot Flowers - FRUTAS-VERMELHAS",
       "description": "A Hot Ball Beija Muito é o produto perfeito para quem quer experimentar novas sensações de uma maneira simples e envolvente. Essas bolinhas lubrificantes são ideais para adicionar um toque especial ao momento íntimo, proporcionando hidratação e lubrificação com um aroma irresistível. Feitas com óleo vegetal e enriquecidas com vitamina E, elas garantem uma pele macia e sedosa, deixando tudo ainda mais prazeroso.",
       "price": 11.99,
-      "image": "img_produtos/Hot Ball Bolinha Frutas vermalhas.jpg"
+      "image": "img_produtos/Hot Ball Bolinha Frutas vermalhas.jpg",
+      "estoque": 1
     },
     {
       "id": 2.5,
       "name": "Hot Ball Bolinha Explosiva Hot Flowers - MORANGO CHAMPANHE",
       "description": "A Hot Ball Beija Muito é o produto perfeito para quem quer experimentar novas sensações de uma maneira simples e envolvente. Essas bolinhas lubrificantes são ideais para adicionar um toque especial ao momento íntimo, proporcionando hidratação e lubrificação com um aroma irresistível. Feitas com óleo vegetal e enriquecidas com vitamina E, elas garantem uma pele macia e sedosa, deixando tudo ainda mais prazeroso.",
       "price": 11.99,
-      "image": "img_produtos/Hot Ball Bolinha morango com champanhe.jpg"
+      "image": "img_produtos/Hot Ball Bolinha morango com champanhe.jpg",
+      "estoque": 1
     },
     {
       "id": 2.6,
       "name": "Yummy Bolinha Beijável Térmica com 2 Unidades de 2g Sexy Fantasy - CAIPIRINHA",
       "description": "As Yummy Balls, são bolinhas aromatizadas desenvolvidas em gelatina, que se rompem ao entrar em contato com a pele. Possuem um aroma levemente adocicado e sabor gostoso, deixando as suas preliminares com o seu love ainda mais quente.",
       "price": 11.99,
-      "image": "img_produtos/Yummy Bolinha-Caipirinha_1.jpg"
+      "image": "img_produtos/Yummy Bolinha-Caipirinha_1.jpg",
+      "estoque": 1
     },
     {
       "id": 2.7,
       "name": "Yummy Bolinha Beijável Térmica com 2 Unidades de 2g Sexy Fantasy - CEREJA",
       "description": "As Yummy Balls, são bolinhas aromatizadas desenvolvidas em gelatina, que se rompem ao entrar em contato com a pele. Possuem um aroma levemente adocicado e sabor gostoso, deixando as suas preliminares com o seu love ainda mais quente.",
       "price": 11.99,
-      "image": "img_produtos/Yummy Bolinha-Cereja_1.jpg"
+      "image": "img_produtos/Yummy Bolinha-Cereja_1.jpg",
+      "estoque": 1
     },
     {
       "id": 2.8,
       "name": "Yummy Bolinha Beijável Térmica com 2 Unidades de 2g Sexy Fantasy - ICE-MENTA",
       "description": "As Yummy Balls, são bolinhas aromatizadas desenvolvidas em gelatina, que se rompem ao entrar em contato com a pele. Possuem um aroma levemente adocicado e sabor gostoso, deixando as suas preliminares com o seu love ainda mais quente.",
       "price": 11.99,
-      "image": "img_produtos/Yummy Bolinha-Ice-Menta_1.jpg"
+      "image": "img_produtos/Yummy Bolinha-Ice-Menta_1.jpg",
+      "estoque": 1
     },
     {
       "id": 2.9,
       "name": "Yummy Bolinha Beijável Térmica com 2 Unidades de 2g Sexy Fantasy - MORANGO",
       "description": "As Yummy Balls, são bolinhas aromatizadas desenvolvidas em gelatina, que se rompem ao entrar em contato com a pele. Possuem um aroma levemente adocicado e sabor gostoso, deixando as suas preliminares com o seu love ainda mais quente.",
       "price": 11.99,
-      "image": "img_produtos/Yummy Bolinha-Morango_1.jpg"
+      "image": "img_produtos/Yummy Bolinha-Morango_1.jpg",
+      "estoque": 1
     },
     {
       "id": 2.11,
       "name": "Hot Ball Power Black Gel Comestível Quente e Gelado Hot Flowers",
       "description": "Feita para uso externo, a Hot Ball Power Black é a escolha perfeita para quem quer apimentar a relação de forma segura e divertida. Seja para uma massagem envolvente ou para um sexo oral inesquecível, essa bolinha vai derreter com o calor do corpo, liberando um óleo aromático que não só lubrifica, mas também aquece e refresca ao mesmo tempo.",
       "price": 13.99,
-      "image": "img_produtos/Hot Ball Power Black Gel Comestível Quente e Gelado.jpg"
+      "image": "img_produtos/Hot Ball Power Black Gel Comestível Quente e Gelado.jpg",
+      "estoque": 1
     },
     {
       "id": 2.12,
       "name": "Hot Ball Plus Shock Hot Flowers",
       "description": "Exerça a magia da sedução com as Hot Balls Plus Shock. Uma inocente massagem de relaxamento pode se transformar em uma inesquecível massagem sensual. Aromática, provoca na pele uma sensação de vibração parecida com pequenos choques.",
       "price": 15.99,
-      "image": "img_produtos/Hot Ball Plus Shock Hot Flowers.jpg"
+      "image": "img_produtos/Hot Ball Plus Shock Hot Flowers.jpg",
+      "estoque": 1
     },
     {
       "id": 2.13,
       "name": "Hot Ball Plus Esquenta Hot Flowers",
       "description": "Exerça a magia da sedução com as Hot Balls Plus esquenta. Uma inocente massagem de relaxamento pode se transformar em uma inesquecível massagem sensual.",
       "price": 12.99,
-      "image": "img_produtos/Hot Ball Plus Esquenta Hot Flowers.jpg"
+      "image": "img_produtos/Hot Ball Plus Esquenta Hot Flowers.jpg",
+      "estoque": 1
     }
   ],
   "excitantes": [
@@ -200,42 +226,48 @@
       "name": "Goze + Gel Acelerador do Prazer 4 em 1 15g Sexy Fantasy",
       "description": "O Goze+ é o companheiro ideal para mulheres que estão enfrentando dificuldades em chegar ao clímax. Esse gel incrível funciona como um acelerador do prazer, ajudando você a atingir o ápice de forma 4X mais rápida, fácil, intensa e gostosa.",
       "price": 27.99,
-      "image": "img_produtos/Goze + Gel Acelerador.jpg"
+      "image": "img_produtos/Goze + Gel Acelerador.jpg",
+      "estoque": 1
     },
     {
       "id": 3.1,
       "name": "Gel Excitante Feminino Trepadeira 15g Linha Brasileirinhos Hot Flowers",
       "description": "O Gel Trepadeira é o excitante feminino perfeito para aqueles momentos em que você deseja sentir um tesão intenso, como quando a química com alguém é irresistível. Com sua fórmula única, que contém óleo de rícino, um afrodisíaco poderoso, você pode trazer à tona essa sensação sempre que quiser, aproveitando ao máximo o prazer e a excitação.",
       "price": 20.99,
-      "image": "img_produtos/Gel Excitante Feminino Trepadeira.jpg"
+      "image": "img_produtos/Gel Excitante Feminino Trepadeira.jpg",
+      "estoque": 1
     },
     {
       "id": 3.3,
       "name": "Xana Loka Gel Excitante Feminino Linha Brasileirinhos 15g Hot Flowers",
       "description": "O Xana Loka é um gel excitante feminino de alta qualidade, ideal tanto para mulheres em busca de sensações intensas quanto para homens que desejam potencializar o prazer de suas parceiras. Este gel oferece uma experiência completa ao combinar excitação, aquecimento, resfriamento, vibração e lubrificação em um único produto, proporcionando experiências deliciosas e altamente prazerosas.",
       "price": 24.99,
-      "image": "img_produtos/xana loka.jpg"
+      "image": "img_produtos/xana loka.jpg",
+      "estoque": 1
     },
     {
       "id": 3.4,
       "name": "Gel Excitante Berinjelo Masculino 15g Hot Flowers",
       "description": "Dê um Upgrade na Sua Performance com o Berinjelo! Se você está em busca de intensificar suas experiências íntimas, o Berinjelo é o gel ideal para você! Este produto foi desenvolvido para ajudar a prolongar a ereção, proporcionando uma sensação de inchaço no pênis e aumentando a sensibilidade. Com o Berinjelo, cada momento se torna mais excitante e cheio de prazer.",
       "price": 20.99,
-      "image": "img_produtos/Gel Excitante Berinjelo Masculino.jpg"
+      "image": "img_produtos/Gel Excitante Berinjelo Masculino.jpg",
+      "estoque": 1
     },
     {
       "id": 3.5,
       "name": "Comigo Ninguém Pode Estimulante Unissex 15g Linha Brasileirinhos Hot Flowers",
       "description": "Aumente a intensidade das suas noites com o Gel Umectante Comigo Ninguém Pode! Com óleo essencial de canela, esse lubrificante unissex proporciona um super aquecimento, aumentando seu apetite sexual e estimulando a sensibilidade na região íntima, ideal para momentos de prazer intenso ele facilita o orgasmo e torna a relação muito mais gostosa. Pode ser usado tanto por homens quanto por mulheres, em ambos as sensações de sensibilidade, excitação e aquecimento prevalecem.",
       "price": 20.99,
-      "image": "img_produtos/comigo-ninguem-pode-15g-hot-flowers.jpg"
+      "image": "img_produtos/comigo-ninguem-pode-15g-hot-flowers.jpg",
+      "estoque": 1
     },
     {
       "id": 3.6,
       "name": "Volumão Gel Excitante Masculino 25 gramas Hot Flowers",
       "description": "Volumão é um gel excitante masculino que enrijece a ereção e causa a sensação de inchaço no pênis. É recomendado desde homens que desejam ter um nível elevado de prazer, até aos que têm dificuldade na ereção e reanima os que querem ter várias experiências na mesma noite. O gel atua no aumento dos níveis de testosterona no corpo e provoca o aumento da libido proporcionando uma melhoria em todos os aspectos da relação sexual.",
       "price": 35.99,
-      "image": "img_produtos/Volumão Gel.jpg"
+      "image": "img_produtos/Volumão Gel.jpg",
+      "estoque": 1
     }
   ],
 
@@ -245,42 +277,48 @@
       "name": "Kuloko Gel Dessensibilizante e Excitante Anal Linha Brasileirinhos 15g Hot Flowers",
       "description": "Quer liberar *? Vai de KULOKO! O Kuloko da Hot Flowers é um gel umectante desenvolvido para quem deseja dar aquela animada na hora da transa e explorar novas fontes de prazeres anais.",
       "price": 24.99,
-      "image": "img_produtos/kuloko.jpg"
+      "image": "img_produtos/kuloko.jpg",
+      "estoque": 1
     },
     {
       "id": 4.1,
       "name": "Plug Anal em Alumínio com Pedra Vip MiX VERMELHA tamanho - P",
       "description": "Aproveite uma das melhores sensações da vida, com o Plug Anal em Alumínio com Pedra da Vip Mix descubra que o sexo anal é mais surpreendente do que você imaginava. Se você está começando, essa é a escolha certa, se já provou e deseja evoluir, essa é a escolha certa ou até mesmo se já possui muita experiência no assunto, garanto, essa é a escolha certa",
       "price": 29.99,
-      "image": "img_produtos/plug anal-vermelho_1.jpg"
+      "image": "img_produtos/plug anal-vermelho_1.jpg",
+      "estoque": 1
     },
     {
       "id": 4.2,
       "name": "Plug Anal em Alumínio com Pedra Vip MiX VERMELHA tamanho - M",
       "description": "Aproveite uma das melhores sensações da vida, com o Plug Anal em Alumínio com Pedra da Vip Mix descubra que o sexo anal é mais surpreendente do que você imaginava. Se você está começando, essa é a escolha certa, se já provou e deseja evoluir, essa é a escolha certa ou até mesmo se já possui muita experiência no assunto, garanto, essa é a escolha certa",
       "price": 34.99,
-      "image": "img_produtos/plug anal-vermelho_1.jpg"
+      "image": "img_produtos/plug anal-vermelho_1.jpg",
+      "estoque": 1
     },
     {
       "id": 4.3,
       "name": "Plug Anal em Alumínio com Pedra Vip MiX ROSA tamanho - M",
       "description": "Aproveite uma das melhores sensações da vida, com o Plug Anal em Alumínio com Pedra da Vip Mix descubra que o sexo anal é mais surpreendente do que você imaginava. Se você está começando, essa é a escolha certa, se já provou e deseja evoluir, essa é a escolha certa ou até mesmo se já possui muita experiência no assunto, garanto, essa é a escolha certa",
       "price": 34.99,
-      "image": "img_produtos/Pluganal-Rosa_1.jpg"
+      "image": "img_produtos/Pluganal-Rosa_1.jpg",
+      "estoque": 1
     },
     {
       "id": 4.4,
       "name": "Plug Anal em Alumínio com Pedra Vip MiX ROSA tamanho - P",
       "description": "Aproveite uma das melhores sensações da vida, com o Plug Anal em Alumínio com Pedra da Vip Mix descubra que o sexo anal é mais surpreendente do que você imaginava. Se você está começando, essa é a escolha certa, se já provou e deseja evoluir, essa é a escolha certa ou até mesmo se já possui muita experiência no assunto, garanto, essa é a escolha certa",
       "price": 29.99,
-      "image": "img_produtos/Pluganal-Rosa_1.jpg"
+      "image": "img_produtos/Pluganal-Rosa_1.jpg",
+      "estoque": 1
     },
     {
       "id": 4.5,
       "name": "Rebelde Sem Calça Dessensibilizante Anal 15g Linha Brasileirinhos Hot Flowers",
       "description": "O Rebelde Sem Calça Dessensibilizante Anal da Linha Brasileirinhos Hot Flowers é um gel dessensibilizante perfeito para quem deseja viver uma experiência anal mais agradável, reduzindo desconfortos e garantindo uma prática mais prazerosa.",
       "price": 21.99,
-      "image": "img_produtos/Rebelde Sem Calça Dessensibilizante Anal.jpg"
+      "image": "img_produtos/Rebelde Sem Calça Dessensibilizante Anal.jpg",
+      "estoque": 1
     }
   ],
   "oral": [],
@@ -290,63 +328,72 @@
       "name": "Horas Bolas Prolongador de Ereção 15g Linha Brasileirinhos Hot Flowers",
       "description": "O Gel Umectante Horas Bolas é um excitante masculino que proporciona sensações intensas de aquecimento, retarda a ejaculação e prolonga a ereção. Aumentando sua lubrificação, reduzindo e controlando a sensibilidade do pênis. Possui aroma agradável e refrescante, ideal para você que deseja melhorar sua performance na relação sexual e ter uma noite inesquecível.",
       "price": 20.99,
-      "image": "img_produtos/Horas Bolas Prolongador de Ereção.jpg"
+      "image": "img_produtos/Horas Bolas Prolongador de Ereção.jpg",
+      "estoque": 1
     },
     {
       "id": 6.1,
       "name": "Volumão Gel Excitante Masculino 25 gramas Hot Flowers",
       "description": "Volumão é um gel excitante masculino que enrijece a ereção e causa a sensação de inchaço no pênis. É recomendado desde homens que desejam ter um nível elevado de prazer, até aos que têm dificuldade na ereção e reanima os que querem ter várias experiências na mesma noite. O gel atua no aumento dos níveis de testosterona no corpo e provoca o aumento da libido proporcionando uma melhoria em todos os aspectos da relação sexual.",
       "price": 35.99,
-      "image": "img_produtos/Volumão Gel.jpg"
+      "image": "img_produtos/Volumão Gel.jpg",
+      "estoque": 1
     },
     {
       "id": 6.2,
       "name": "EGG Six Girls em Cyberskin Masturbador Masculino Vip Mix AMANDA",
       "description": "Feito para homens que querem praticar a masturbação, sem perder a sensação de realismos, e com novas sensações que farão a loucura. Com ele você tem texturas diferentes para que possa experimentar novas sensações, deixando seu momento íntimo ainda mais gostoso.",
       "price": 34.99,
-      "image": "img_produtos/egg sex-Amanda_2.jpg"
+      "image": "img_produtos/egg sex-Amanda_2.jpg",
+      "estoque": 1
     },
     {
       "id": 6.3,
       "name": "EGG Six Girls em Cyberskin Masturbador Masculino Vip Mix CLARICE",
       "description": "Feito para homens que querem praticar a masturbação, sem perder a sensação de realismos, e com novas sensações que farão a loucura. Com ele você tem texturas diferentes para que possa experimentar novas sensações, deixando seu momento íntimo ainda mais gostoso.",
       "price": 34.99,
-      "image": "img_produtos/egg sex-Clarice_1.jpg"
+      "image": "img_produtos/egg sex-Clarice_1.jpg",
+      "estoque": 1
     },
     {
       "id": 6.4,
       "name": "EGG Six Girls em Cyberskin Masturbador Masculino Vip Mix SARITA",
       "description": "Feito para homens que querem praticar a masturbação, sem perder a sensação de realismos, e com novas sensações que farão a loucura. Com ele você tem texturas diferentes para que possa experimentar novas sensações, deixando seu momento íntimo ainda mais gostoso.",
       "price": 34.99,
-      "image": "img_produtos/egg sex-Sarita_1.jpg"
+      "image": "img_produtos/egg sex-Sarita_1.jpg",
+      "estoque": 1
     },
     {
       "id": 6.5,
       "name": "Egg Masturbador Masculino Magical Kiss Hard 2 Sexy Import SHINY",
       "description": "O Masturbador Masculino em formato “Egg”, chegou para elevar o nível da masturbação masculina. Ele permite sensações diferenciadas, com suas texturas diferentes, aumentando ainda mais o tesão desse momento. Escolha uma textura, e garanta seu prazer!",
       "price": 24.99,
-      "image": "img_produtos/EGG-Shiny_1.jpg"
+      "image": "img_produtos/EGG-Shiny_1.jpg",
+      "estoque": 1
     },
     {
       "id": 6.6,
       "name": "Egg Masturbador Masculino Magical Kiss Hard 2 Sexy Import THUNDER",
       "description": "O Masturbador Masculino em formato “Egg”, chegou para elevar o nível da masturbação masculina. Ele permite sensações diferenciadas, com suas texturas diferentes, aumentando ainda mais o tesão desse momento. Escolha uma textura, e garanta seu prazer!",
       "price": 24.99,
-      "image": "img_produtos/EGG-Thunder_1.jpg"
+      "image": "img_produtos/EGG-Thunder_1.jpg",
+      "estoque": 1
     },
     {
       "id": 6.6,
       "name": "Egg Masturbador Masculino Magical Kiss Hard 2 Sexy Import CLOUDY",
       "description": "O Masturbador Masculino em formato “Egg”, chegou para elevar o nível da masturbação masculina. Ele permite sensações diferenciadas, com suas texturas diferentes, aumentando ainda mais o tesão desse momento. Escolha uma textura, e garanta seu prazer!",
       "price": 24.99,
-      "image": "img_produtos/EGGCloudy_1.jpg"
+      "image": "img_produtos/EGGCloudy_1.jpg",
+      "estoque": 1
     },
     {
       "id": 6.7,
       "name": "Gel Excitante Berinjelo Masculino 15g Hot Flowers",
       "description": "Dê um Upgrade na Sua Performance com o Berinjelo! Se você está em busca de intensificar suas experiências íntimas, o Berinjelo é o gel ideal para você! Este produto foi desenvolvido para ajudar a prolongar a ereção, proporcionando uma sensação de inchaço no pênis e aumentando a sensibilidade. Com o Berinjelo, cada momento se torna mais excitante e cheio de prazer.",
       "price": 20.99,
-      "image": "img_produtos/Gel Excitante Berinjelo Masculino.jpg"
+      "image": "img_produtos/Gel Excitante Berinjelo Masculino.jpg",
+      "estoque": 1
     }
   ],
   "ela": [
@@ -362,42 +409,48 @@
       "name": "Perfume de Calcinha Aromático 40ml Apinil MORANGO CHAMPAGNE",
       "description": "O Perfume de Calcinha Apinil é um aromatizador em spray, com fragrância feminina e sensual de frutinhas para deixar suas lingeries com aroma marcante e agradável. Produzido com elementos especiais para proporcionar à sua roupa íntima um cheiro próprio, fragrância suave, doce e romântica. Aumentando a sensualidade da Lingerie!",
       "price": 14.99,
-      "image": "img_produtos/Perfume de Calcinha Aromático 40ml-Morango-com-Champagne_1.jpg"
+      "image": "img_produtos/Perfume de Calcinha Aromático 40ml-Morango-com-Champagne_1.jpg",
+      "estoque": 1
     },
     {
       "id": 7.2,
       "name": "Perfume de Calcinha Aromático 40ml Apinil MELANCIA",
       "description": "O Perfume de Calcinha Apinil é um aromatizador em spray, com fragrância feminina e sensual de frutinhas para deixar suas lingeries com aroma marcante e agradável. Produzido com elementos especiais para proporcionar à sua roupa íntima um cheiro próprio, fragrância suave, doce e romântica. Aumentando a sensualidade da Lingerie!",
       "price": 14.99,
-      "image": "img_produtos/Perfume de Calcinha Aromático 40ml-Melancia_1.jpg"
+      "image": "img_produtos/Perfume de Calcinha Aromático 40ml-Melancia_1.jpg",
+      "estoque": 1
     },
     {
       "id": 7.3,
       "name": "Power Bullet Mini Estimulador Clitoriano Sexy Import",
       "description": "O Power Bullet é um potente e surpreendente mini vibrador que além de instigante, também é muito prático e portátil para você levar onde desejar. Com suas poderosas vibrações você poderá experimentar muito fogo para incrementar a noite repleta de massagens.",
       "price": 22.99,
-      "image": "img_produtos/Power Bullet Mini Estimulador Clitoriano Sexy Import roxo.jpg"
+      "image": "img_produtos/Power Bullet Mini Estimulador Clitoriano Sexy Import roxo.jpg",
+      "estoque": 1
     },
     {
       "id": 7.4,
       "name": "Vibrador Ponto G em Formato de Golfinho em ABS You Vibe ROXO",
       "description": "Quer explorar novas sensações e alcançar o máximo de prazer direto no ponto G? O Vibrador Golfinho com Ponta Curvada é o brinquedo ideal para quem deseja estimular o ponto G com precisão e intensidade. Seu design em formato de golfinho traz um toque divertido e único, enquanto sua ponta curvada, representada pela cabeça do golfinho, foi projetada para atingir o ponto G de forma fácil e eficaz. Feito em material ABS aveludado de alta qualidade, ele garante durabilidade e um toque suave, proporcionando uma experiência incrível a cada uso.",
       "price": 19.99,
-      "image": "img_produtos/Vibrador Ponto G em Formato de Golfinho em ABS You Vibe roxo.jpg"
+      "image": "img_produtos/Vibrador Ponto G em Formato de Golfinho em ABS You Vibe roxo.jpg",
+      "estoque": 1
     },
     {
       "id": 7.4,
       "name": "Vibrador Ponto G em Formato de Golfinho em ABS You Vibe PRETO",
       "description": "Quer explorar novas sensações e alcançar o máximo de prazer direto no ponto G? O Vibrador Golfinho com Ponta Curvada é o brinquedo ideal para quem deseja estimular o ponto G com precisão e intensidade. Seu design em formato de golfinho traz um toque divertido e único, enquanto sua ponta curvada, representada pela cabeça do golfinho, foi projetada para atingir o ponto G de forma fácil e eficaz. Feito em material ABS aveludado de alta qualidade, ele garante durabilidade e um toque suave, proporcionando uma experiência incrível a cada uso.",
       "price": 19.99,
-      "image": "img_produtos/Vibrador Ponto G em Formato de Golfinho em ABS You Vibe preto.jpg"
+      "image": "img_produtos/Vibrador Ponto G em Formato de Golfinho em ABS You Vibe preto.jpg",
+      "estoque": 1
     },
     {
       "id": 7.4,
       "name": "Vibrador Ponto G em Formato de Golfinho em ABS You Vibe ROXO",
       "description": "Quer explorar novas sensações e alcançar o máximo de prazer direto no ponto G? O Vibrador Golfinho com Ponta Curvada é o brinquedo ideal para quem deseja estimular o ponto G com precisão e intensidade. Seu design em formato de golfinho traz um toque divertido e único, enquanto sua ponta curvada, representada pela cabeça do golfinho, foi projetada para atingir o ponto G de forma fácil e eficaz. Feito em material ABS aveludado de alta qualidade, ele garante durabilidade e um toque suave, proporcionando uma experiência incrível a cada uso.",
       "price": 19.99,
-      "image": "img_produtos/Vibrador Ponto G em Formato de Golfinho em ABS You Vibe pink.jpg"
+      "image": "img_produtos/Vibrador Ponto G em Formato de Golfinho em ABS You Vibe pink.jpg",
+      "estoque": 0
     }
   ],
   "combos": [
@@ -406,56 +459,64 @@
       "name": "Vibrador Ponto G em Formato de Golfinho em ABS You Vibe ROXO ",
       "description": "Quer explorar novas sensações e alcançar o máximo de prazer direto no ponto G? O Vibrador Golfinho com Ponta Curvada é o brinquedo ideal para quem deseja estimular o ponto G com precisão e intensidade. Seu design em formato de golfinho traz um toque divertido e único, enquanto sua ponta curvada, representada pela cabeça do golfinho, foi projetada para atingir o ponto G de forma fácil e eficaz. Feito em material ABS aveludado de alta qualidade, ele garante durabilidade e um toque suave, proporcionando uma experiência incrível a cada uso.",
       "price": 19.99,
-      "image": "img_produtos/kitvolumao.jpg"
+      "image": "img_produtos/kitvolumao.jpg",
+      "estoque": 1
     },
     {
       "id": 8.1,
       "name": "Vibrador Ponto G em Formato de Golfinho em ABS You Vibe(ROXO)",
       "description": "Quer explorar novas sensações e alcançar o máximo de prazer direto no ponto G? O Vibrador Golfinho com Ponta Curvada é o brinquedo ideal para quem deseja estimular o ponto G com precisão e intensidade. Seu design em formato de golfinho traz um toque divertido e único, enquanto sua ponta curvada, representada pela cabeça do golfinho, foi projetada para atingir o ponto G de forma fácil e eficaz. Feito em material ABS aveludado de alta qualidade, ele garante durabilidade e um toque suave, proporcionando uma experiência incrível a cada uso.",
       "price": 19.99,
-      "image": "img_produtos/kitxanaloka.jpg"
+      "image": "img_produtos/kitxanaloka.jpg",
+      "estoque": 0
     },
     {
       "id": 8.2,
       "name": "Vibrador Ponto G em Formato de Golfinho em ABS You Vibe(ROXO)",
       "description": "Quer explorar novas sensações e alcançar o máximo de prazer direto no ponto G? O Vibrador Golfinho com Ponta Curvada é o brinquedo ideal para quem deseja estimular o ponto G com precisão e intensidade. Seu design em formato de golfinho traz um toque divertido e único, enquanto sua ponta curvada, representada pela cabeça do golfinho, foi projetada para atingir o ponto G de forma fácil e eficaz. Feito em material ABS aveludado de alta qualidade, ele garante durabilidade e um toque suave, proporcionando uma experiência incrível a cada uso.",
       "price": 19.99,
-      "image": "img_produtos/kityummy.jpg"
+      "image": "img_produtos/kityummy.jpg",
+      "estoque": 0
     },
     {
       "id": 8.3,
       "name": "Vibrador Ponto G em Formato de Golfinho em ABS You Vibe(ROXO)",
       "description": "Quer explorar novas sensações e alcançar o máximo de prazer direto no ponto G? O Vibrador Golfinho com Ponta Curvada é o brinquedo ideal para quem deseja estimular o ponto G com precisão e intensidade. Seu design em formato de golfinho traz um toque divertido e único, enquanto sua ponta curvada, representada pela cabeça do golfinho, foi projetada para atingir o ponto G de forma fácil e eficaz. Feito em material ABS aveludado de alta qualidade, ele garante durabilidade e um toque suave, proporcionando uma experiência incrível a cada uso.",
       "price": 19.99,
-      "image": "img_produtos/kitvolumao.jpg"
+      "image": "img_produtos/kitvolumao.jpg",
+      "estoque": 0
     },
     {
       "id": 8.4,
       "name": "Vibrador Ponto G em Formato de Golfinho em ABS You Vibe(ROXO)",
       "description": "Quer explorar novas sensações e alcançar o máximo de prazer direto no ponto G? O Vibrador Golfinho com Ponta Curvada é o brinquedo ideal para quem deseja estimular o ponto G com precisão e intensidade. Seu design em formato de golfinho traz um toque divertido e único, enquanto sua ponta curvada, representada pela cabeça do golfinho, foi projetada para atingir o ponto G de forma fácil e eficaz. Feito em material ABS aveludado de alta qualidade, ele garante durabilidade e um toque suave, proporcionando uma experiência incrível a cada uso.",
       "price": 19.99,
-      "image": "img_produtos/kitxanaloka.jpg"
+      "image": "img_produtos/kitxanaloka.jpg",
+      "estoque": 0
     },
     {
       "id": 8.5,
       "name": "Vibrador Ponto G em Formato de Golfinho em ABS You Vibe(ROXO)",
       "description": "Quer explorar novas sensações e alcançar o máximo de prazer direto no ponto G? O Vibrador Golfinho com Ponta Curvada é o brinquedo ideal para quem deseja estimular o ponto G com precisão e intensidade. Seu design em formato de golfinho traz um toque divertido e único, enquanto sua ponta curvada, representada pela cabeça do golfinho, foi projetada para atingir o ponto G de forma fácil e eficaz. Feito em material ABS aveludado de alta qualidade, ele garante durabilidade e um toque suave, proporcionando uma experiência incrível a cada uso.",
       "price": 19.99,
-      "image": "img_produtos/kityummy.jpg"
+      "image": "img_produtos/kityummy.jpg",
+      "estoque": 1
     },
     {
       "id": 8.6,
       "name": "Vibrador Ponto G em Formato de Golfinho em ABS You Vibe(ROXO)",
       "description": "Quer explorar novas sensações e alcançar o máximo de prazer direto no ponto G? O Vibrador Golfinho com Ponta Curvada é o brinquedo ideal para quem deseja estimular o ponto G com precisão e intensidade. Seu design em formato de golfinho traz um toque divertido e único, enquanto sua ponta curvada, representada pela cabeça do golfinho, foi projetada para atingir o ponto G de forma fácil e eficaz. Feito em material ABS aveludado de alta qualidade, ele garante durabilidade e um toque suave, proporcionando uma experiência incrível a cada uso.",
       "price": 19.99,
-      "image": "img_produtos/kitvolumao.jpg"
+      "image": "img_produtos/kitvolumao.jpg",
+      "estoque": 1
     },
     {
       "id": 8.7,
       "name": "Vibrador Ponto G em Formato de Golfinho em ABS You Vibe(ROXO)",
       "description": "Quer explorar novas sensações e alcançar o máximo de prazer direto no ponto G? O Vibrador Golfinho com Ponta Curvada é o brinquedo ideal para quem deseja estimular o ponto G com precisão e intensidade. Seu design em formato de golfinho traz um toque divertido e único, enquanto sua ponta curvada, representada pela cabeça do golfinho, foi projetada para atingir o ponto G de forma fácil e eficaz. Feito em material ABS aveludado de alta qualidade, ele garante durabilidade e um toque suave, proporcionando uma experiência incrível a cada uso.",
       "price": 19.99,
-      "image": "img_produtos/kitxanaloka.jpg"
+      "image": "img_produtos/kitxanaloka.jpg",
+      "estoque": 1
     }
   ]
 }

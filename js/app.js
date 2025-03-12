@@ -62,7 +62,7 @@ function loadSliderItems(comboItems) {
       }
 
       const card = `
-        <div class="card" text-align: center;">
+        <div class="card" style="text-align: center;">
           <img src="${item.image}" class="card-img-top" alt="${item.name}" />
           <div class="card-body">
             <h5 class="card-title" style="margin-bottom: 0; font-weight: bold;">
@@ -84,8 +84,8 @@ function loadSliderItems(comboItems) {
             <a class="btn-modal" onclick='openModal(${JSON.stringify(item)})'>
               <i class="fa-solid fa-eye btn-detalhes"></i> Mais Detalhes
             </a>
-            <button class="btn btn-danger">
-              <i class="fa-solid fa-cart-shopping"></i> COMPRAR
+            <button class="btn btn-danger" ${item.estoque === 0 ? "disabled" : ""}>
+              <i class="fa-solid fa-cart-shopping"></i> ${item.estoque === 0 ? "Sem Estoque" : "COMPRAR"}
             </button>
           </div>
         </div>
@@ -116,6 +116,7 @@ function loadSliderItems(comboItems) {
     console.log(item); // Aqui você pode abrir um modal com mais informações sobre o item
   }
 }
+
 // Função para exibir os itens na tela
 function displayItems(itemsToDisplay) {
   const itemsContainer = document.querySelector(".row.produtos-item");
@@ -133,8 +134,9 @@ function displayItems(itemsToDisplay) {
       "justify-content-center"
     );
 
+    // Criação do card do item
     itemElement.innerHTML = `
-      <div class="card"text-align: center; position: relative;">
+      <div class="card" style="text-align: center; position: relative;">
         <i class="fa-regular fa-heart coracao fa-2x"></i>
         <img src="${item.image}" class="card-img-top" alt="${item.name}" />
         <div class="card-body">
@@ -157,8 +159,10 @@ function displayItems(itemsToDisplay) {
           <a class="btn-modal" onclick='openModal(${JSON.stringify(item)})'>
             <i class="fa-solid fa-eye"></i> Mais Detalhes 
           </a>
-          <button class="btn btn-danger">
-            <i class="fa-solid fa-cart-shopping"></i> COMPRAR
+          
+          <!-- Botão de compra -->
+          <button class="btn btn-danger" id="btnCompra${item.id}" ${item.estoque === 0 ? "disabled" : ""}>
+            <i class="fa-solid fa-cart-shopping"></i> ${item.estoque === 0 ? "Sem Estoque" : "COMPRAR"}
           </button>
         </div>
       </div>
