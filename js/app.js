@@ -161,7 +161,7 @@ function displayItems(itemsToDisplay) {
           </a>
           
           <!-- Botão de compra -->
-          <button class="btn btn-danger" id="btnCompra${item.id}" ${item.estoque === 0 ? "disabled" : ""}>
+          <button class="btn btn-danger add-card" data-id="${item.id}" id="btnCompra${item.id}" ${item.estoque === 0 ? "disabled" : ""}>
             <i class="fa-solid fa-cart-shopping"></i> ${item.estoque === 0 ? "Sem Estoque" : "COMPRAR"}
           </button>
         </div>
@@ -190,6 +190,10 @@ function openModal(item) {
     item.price * 1.25
   ).toFixed(2);
   document.getElementById("modalDiscount").textContent = "25% OFF no PIX";
+
+  // Adiciona o ID do item ao botão "COMPRAR" no modal
+  const modalBuyButton = document.querySelector(".modal-buy button");
+  modalBuyButton.setAttribute("data-id", item.id);
 
   const modal = new bootstrap.Modal(document.getElementById("itemModal"));
   modal.show();
@@ -369,30 +373,3 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
-
-// Funções do carinho
-const cartIcons = document.querySelectorAll(".cart-compras"); // Todos os botões que abrem o carrinho
-const cartCar = document.querySelector(".cart-car"); // Janela do carrinho
-const cartCloseButtons = document.querySelectorAll(".close-cart"); // Todos os botões que fecham o carrinho
-
-if (cartIcons.length > 0 && cartCar && cartCloseButtons.length > 0) {
-  // Adicionar evento de clique em todos os botões que abrem o carrinho
-  cartIcons.forEach((icon) => {
-    icon.addEventListener("click", (event) => {
-      event.preventDefault(); // Evita que a página role para o topo
-      cartCar.classList.add("active");
-    });
-  });
-
-  // Adicionar evento de clique em todos os botões que fecham o carrinho
-  cartCloseButtons.forEach((btn) => {
-    btn.addEventListener("click", (event) => {
-      event.preventDefault(); // Evita comportamento indesejado
-      cartCar.classList.remove("active");
-    });
-  });
-} else {
-  console.error("Erro: Um dos elementos do carrinho não foi encontrado!");
-}
-
-// Função para adicionar um item ao carrinho
