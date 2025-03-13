@@ -378,13 +378,21 @@ const cartCloseButtons = document.querySelectorAll(".close-cart"); // Todos os b
 if (cartIcons.length > 0 && cartCar && cartCloseButtons.length > 0) {
   // Adicionar evento de clique em todos os botões que abrem o carrinho
   cartIcons.forEach((icon) => {
-    icon.addEventListener("click", () => cartCar.classList.add("active"));
+    icon.addEventListener("click", (event) => {
+      event.preventDefault(); // Evita que a página role para o topo
+      cartCar.classList.add("active");
+    });
   });
 
   // Adicionar evento de clique em todos os botões que fecham o carrinho
   cartCloseButtons.forEach((btn) => {
-    btn.addEventListener("click", () => cartCar.classList.remove("active"));
+    btn.addEventListener("click", (event) => {
+      event.preventDefault(); // Evita comportamento indesejado
+      cartCar.classList.remove("active");
+    });
   });
 } else {
   console.error("Erro: Um dos elementos do carrinho não foi encontrado!");
 }
+
+// Função para adicionar um item ao carrinho
