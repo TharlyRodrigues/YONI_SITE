@@ -215,9 +215,7 @@
 }
 
 .coracao {
-  transition:
-    transform 0.2s ease,
-    color 0.2s ease;
+  transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .coracao:active {
@@ -319,9 +317,7 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   padding: 0 20px;
   backface-visibility: hidden;
-  animation:
-    background-timer 2s ease-out infinite,
-    scale 0.9s ease-in-out infinite;
+  animation: background-timer 2s ease-out infinite, scale 0.9s ease-in-out infinite;
 }
 
 .icon-title,
@@ -400,7 +396,7 @@
 .cart-car {
   position: fixed;
   top: 0;
-  right: 0;
+  right: -100%;
   width: 600px;
   height: 100%;
   background-color: var(--bs-light);
@@ -408,6 +404,16 @@
   z-index: 20;
   overflow-y: auto;
   padding: 10px 20px 40px;
+  transition: 0.5s ease-in-out;
+}
+
+.cart-car #close {
+  cursor: pointer;
+}
+
+.cart-car.active {
+  right: 0;
+  cursor: pointer;
 }
 
 .card-header .card-title {
@@ -422,6 +428,7 @@
   border-bottom: 2px solid #c9c9c9;
   padding: 20px 0 0 0;
 }
+
 .cart-input {
   padding: 20px 0 0 20px;
 }
@@ -449,6 +456,7 @@
   margin-top: 15px;
   margin-right: 13px;
 }
+
 @keyframes colos {
   0% {
     color: var(--bs-primary);
@@ -539,8 +547,7 @@
   #mobile-menu {
     display: block;
   }
-
   .cart-car {
-    width: 600px;
+    width: 390px;
   }
 }

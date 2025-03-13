@@ -369,3 +369,22 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+// Funções do carinho
+const cartIcons = document.querySelectorAll(".cart-compras"); // Todos os botões que abrem o carrinho
+const cartCar = document.querySelector(".cart-car"); // Janela do carrinho
+const cartCloseButtons = document.querySelectorAll(".close-cart"); // Todos os botões que fecham o carrinho
+
+if (cartIcons.length > 0 && cartCar && cartCloseButtons.length > 0) {
+  // Adicionar evento de clique em todos os botões que abrem o carrinho
+  cartIcons.forEach((icon) => {
+    icon.addEventListener("click", () => cartCar.classList.add("active"));
+  });
+
+  // Adicionar evento de clique em todos os botões que fecham o carrinho
+  cartCloseButtons.forEach((btn) => {
+    btn.addEventListener("click", () => cartCar.classList.remove("active"));
+  });
+} else {
+  console.error("Erro: Um dos elementos do carrinho não foi encontrado!");
+}

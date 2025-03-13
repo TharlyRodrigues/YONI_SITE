@@ -386,6 +386,70 @@
   background-color: #444444; /* Cor do indicador ativo */
 }
 
+/* Estilo para os cart-carrinho */
+.cart-car {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 600px;
+  height: 100%;
+  background-color: var(--bs-light);
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 20;
+  overflow-y: auto;
+  padding: 10px 20px 40px;
+  transition: 0.5s ease-in-out;
+}
+
+.cart-car #close {
+  cursor: pointer;
+}
+
+.cart-car.active {
+  right: 0;
+  cursor: pointer;
+}
+
+.card-header .card-title {
+  text-align: center;
+  font-size: 2rem;
+  border-bottom: 2px solid #c9c9c9;
+}
+
+.card-body {
+  padding: 0;
+  margin: 0;
+  border-bottom: 2px solid #c9c9c9;
+  padding: 20px 0 0 0;
+}
+.cart-input {
+  padding: 20px 0 0 20px;
+}
+
+.input-group .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  font-size: 1rem;
+}
+
+#quantity {
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  padding: 0;
+  text-align: center;
+  border: none;
+  background: var(--bs-light);
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 20px;
+  margin-top: 15px;
+  margin-right: 13px;
+}
+
 // animation keyframes
 @keyframes colos {
   0% {
@@ -486,5 +550,9 @@
 
   #mobile-menu {
     display: block;
+  }
+
+  .cart-car {
+    width: 390px;
   }
 }
