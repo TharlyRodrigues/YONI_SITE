@@ -407,6 +407,14 @@
   transition: 0.5s ease-in-out;
 }
 
+.txt-cart {
+  font-size: 1.5rem;
+}
+
+.cart-button button {
+  font-size: 1.2rem;
+}
+
 .cart-car #close {
   cursor: pointer;
 }
@@ -418,7 +426,7 @@
 
 .card-header .card-title {
   text-align: center;
-  font-size: 2rem;
+  font-size: 2.5rem;
   border-bottom: 2px solid #c9c9c9;
 }
 
@@ -449,12 +457,20 @@
   padding: 0;
   text-align: center;
   border: none;
-  background: var(--bs-light);
+  background-color: transparent;
   font-weight: 400;
   font-size: 1.5rem;
   line-height: 20px;
   margin-top: 15px;
   margin-right: 13px;
+}
+
+.card-footer {
+  font-size: 1.5rem;
+}
+
+.card-footer .total-sub {
+  color: #dc3545;
 }
 
 @keyframes colos {

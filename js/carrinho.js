@@ -25,7 +25,9 @@ function updateCartTotal() {
     (sum, item) => sum + item.price * item.quantity,
     0
   );
-  totalSubElement.textContent = `R$ ${total.toFixed(2)}`;
+
+  totalSubElement.innerHTML = `<p class="total-sub"><s>R$ ${(total * 1.25).toFixed(2)}</s></p>`;
+
   totalPriceElement.textContent = `R$ ${total.toFixed(2)}`;
 }
 
@@ -45,14 +47,14 @@ function renderCartItems() {
           <img src="${item.image}" alt="${item.name}" class="img-fluid img-cart-car">
         </div>
         <div class="col-7">
-          <h3 class="cart-title-car">${item.name}</h3>
-          <span class="text-muted">R$ ${item.price.toFixed(2)}</span>
+        <h4 class="cart-title-car">${item.name}</h4>
+        <span class="text-muted">R$ ${item.price.toFixed(2)}</span>
         </div>
         <div class="row cart-input justify-content-between align-items-center">
           <div class="col-10 col-md-5 btn-quantyti">
             <div class="input-group">
               <button class="btn btn-outline-danger decrement" data-index="${index}">-</button>
-              <span class="form-control text-center">${item.quantity}</span>
+              <span class="form-control text-center" id="quantity">${item.quantity}</span>
               <button class="btn btn-outline-secondary increment" data-index="${index}">+</button>
             </div>
           </div>
