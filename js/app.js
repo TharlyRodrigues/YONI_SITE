@@ -84,9 +84,10 @@ function loadSliderItems(comboItems) {
             <a class="btn-modal" onclick='openModal(${JSON.stringify(item)})'>
               <i class="fa-solid fa-eye btn-detalhes"></i> Mais Detalhes
             </a>
-            <button class="btn btn-danger" ${item.estoque === 0 ? "disabled" : ""}>
-              <i class="fa-solid fa-cart-shopping"></i> ${item.estoque === 0 ? "Sem Estoque" : "COMPRAR"}
-            </button>
+            <!-- Botão de compra -->
+          <button class="btn btn-danger add-card" data-id="${item.id}" id="btnCompra${item.id}" ${item.estoque === 0 ? "disabled" : ""}>
+            <i class="fa-solid fa-cart-shopping"></i> ${item.estoque === 0 ? "Sem Estoque" : "COMPRAR"}
+          </button>
           </div>
         </div>
       `;

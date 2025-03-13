@@ -1,19 +1,19 @@
 // Variáveis do carrinho
-let cartItems = [];
+let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 const cartIcons = document.querySelectorAll(".cart-compras"); // Ícones do carrinho
 const cartCar = document.querySelector(".cart-car"); // Janela do carrinho
 const cartCloseButtons = document.querySelectorAll(".close-cart"); // Botões de fechar
 const cartBody = document.querySelector(".card-body"); // Área onde os itens aparecem
 const totalPriceElement = document.querySelector(".total-price"); // Total do carrinho
 const totalSubElement = document.querySelector(".total-sub"); // Subtotal
-const cartCounter = document.querySelector("#quantyti-shop"); // Contador de itens no carrinho
+const cartCounter = document.querySelector(".quantyti-shop"); // Contador de itens no carrinho
 
 // Atualiza o contador do carrinho
 function updateCartCount() {
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   cartCounter.textContent = totalItems;
   // Atualiza outros elementos que exibem a quantidade
-  const otherQuantityElements = document.querySelectorAll(".quantyti");
+  const otherQuantityElements = document.querySelectorAll(".quantyti-shop");
   otherQuantityElements.forEach((element) => {
     element.textContent = totalItems;
   });
@@ -66,7 +66,7 @@ function renderCartItems() {
     cartBody.innerHTML += cartItemHTML;
   });
 
-  // Eventos dos botões
+  // Eventos dos botões de incremento e decremento
   document.querySelectorAll(".increment").forEach((button) => {
     button.addEventListener("click", (event) => {
       const index = event.target.dataset.index;
@@ -101,6 +101,12 @@ function updateCart() {
   renderCartItems();
   updateCartTotal();
   updateCartCount();
+  saveCart(); // Salva no localStorage após atualizar
+}
+
+// Salva o carrinho no localStorage
+function saveCart() {
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
 }
 
 // Adiciona um item ao carrinho
@@ -175,3 +181,13 @@ document
     addToCart(item);
     updateAllQuantities();
   });
+
+// Carregar os itens do carrinho do localStorage ao iniciar a página
+document.addEventListener("DOMContentLoaded", () => {
+  // Verifica se há itens no localStorage
+  if (cartItems.length > 0) {
+    renderCartItems(); // Renderiza os itens do carrinho
+    updateCartCount(); // Atualiza o contador de itens no carrinho
+    updateCartTotal(); // Atualiza o total do carrinho
+  }
+});
