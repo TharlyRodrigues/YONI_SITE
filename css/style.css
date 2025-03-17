@@ -1,4 +1,14 @@
 @charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+}
+
 .sombra {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
 }
@@ -102,6 +112,7 @@
 }
 
 .sticky-element {
+  display: block;
   position: sticky;
   top: 0;
   z-index: 20;
@@ -540,6 +551,11 @@
 }
 
 @media (max-width: 991px) {
+  .sticky-element {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
   .nav .nav-item .nav-link {
     font-size: 2rem;
   }

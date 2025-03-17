@@ -1,6 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   overflow-x: hidden;
 }
+
 // header style
 .sombra {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
@@ -104,6 +111,7 @@ body {
 }
 
 .sticky-element {
+  display: block;
   position: sticky;
   top: 0;
   z-index: 20;
@@ -543,6 +551,11 @@ body {
 // responsive
 
 @media (max-width: 991px) {
+  .sticky-element {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
   .nav .nav-item .nav-link {
     font-size: 2rem;
   }
