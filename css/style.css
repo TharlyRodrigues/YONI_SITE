@@ -1,18 +1,4 @@
 @charset "UTF-8";
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  overflow-x: hidden;
-}
-
-html {
-  overflow-x: visible;
-}
-
 .sombra {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
 }
