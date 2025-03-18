@@ -26,7 +26,7 @@ function updateCartTotal() {
     0
   );
 
-  totalSubElement.innerHTML = `<p class="total-sub"><s>R$ ${(total * 1.25).toFixed(2)}</s></p>`;
+  totalSubElement.innerHTML = `<p class="total-sub">R$ ${(total * 1.25).toFixed(2)}</p>`;
 
   totalPriceElement.textContent = `R$ ${total.toFixed(2)}`;
 }
