@@ -81,8 +81,10 @@ function loadSliderItems(comboItems) {
             <p class="h5 preco">R$ ${item.price.toFixed(2)}
               <span class="text-muted" style="font-size: 0.8rem">no pix</span>
             </p>
-            <a class="btn-modal" onclick='openModal(${JSON.stringify(item)})'>
-              <i class="fa-solid fa-eye btn-detalhes"></i> Mais Detalhes
+            <a class="btn-modal ${item.estoque === 0 ? "disabled-link" : ""}" 
+              ${item.estoque > 0 ? `onclick='openModal(${JSON.stringify(item)})'` : ""}
+              data-id="${item.id}">
+              <i class="fa-solid fa-eye"></i> Mais Detalhes 
             </a>
             <!-- Botão de compra -->
           <button class="btn btn-danger add-card" data-id="${item.id}" id="btnCompra${item.id}" ${item.estoque === 0 ? "disabled" : ""}>
@@ -157,10 +159,11 @@ function displayItems(itemsToDisplay) {
           <p class="h5 preco">R$ ${item.price.toFixed(2)}
             <span class="text-muted" style="font-size: 0.8rem">no pix</span>
           </p>
-          <a class="btn-modal" onclick='openModal(${JSON.stringify(item)})'>
-            <i class="fa-solid fa-eye"></i> Mais Detalhes 
-          </a>
-          
+            <a class="btn-modal ${item.estoque === 0 ? "disabled-link" : ""}" 
+              ${item.estoque > 0 ? `onclick='openModal(${JSON.stringify(item)})'` : ""}
+              data-id="${item.id}">
+              <i class="fa-solid fa-eye"></i> Mais Detalhes 
+            </a>
           <!-- Botão de compra -->
           <button class="btn btn-danger add-card" data-id="${item.id}" id="btnCompra${item.id}" ${item.estoque === 0 ? "disabled" : ""}>
             <i class="fa-solid fa-cart-shopping"></i> ${item.estoque === 0 ? "Sem Estoque" : "COMPRAR"}

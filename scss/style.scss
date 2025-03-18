@@ -272,6 +272,12 @@
   color: var(--bs-danger);
 }
 
+.disabled-link {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .preco {
   color: var(--bs-danger);
   margin-bottom: 3px;
