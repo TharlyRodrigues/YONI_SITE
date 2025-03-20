@@ -42,8 +42,8 @@ function renderCartItems() {
 
   cartItems.forEach((item, index) => {
     const cartItemHTML = `
-      <div class="row align-items-center mb-3 .item__carrinho">
-        <div class="col-5">
+      <div class="row align-items-center mb-3 item__carrinho">
+        <div class="col-5 ">
           <img src="${item.image}" alt="${item.name}" class="img-fluid img-cart-car">
         </div>
         <div class="col-7">

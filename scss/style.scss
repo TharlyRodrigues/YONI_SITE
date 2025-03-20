@@ -228,18 +228,20 @@
 .card-img-top {
   max-height: 200px;
   object-fit: contain;
-  margin-bottom: 15px;
+  margin-bottom: -1rem;
 }
 
 .card-title {
   min-height: 6rem;
   font-size: 1rem;
-  line-height: 1.2;
+  line-height: 1rem;
+  margin-bottom: 5px;
 }
-.badge {
+.desconto {
   font-size: 0.9rem;
-  margin-bottom: 10px;
+  margin-top: -2.5rem;
 }
+
 .card-body {
   display: flex;
   flex-direction: column;
@@ -406,6 +408,11 @@
   padding: 10px 20px 40px;
   transition: 0.5s ease-in-out;
 }
+.item__carrinho img {
+  width: 80%;
+  height: auto;
+  margin-left: 1.3rem;
+}
 
 .txt-cart {
   font-size: 1.5rem;
@@ -424,20 +431,36 @@
   cursor: pointer;
 }
 
+.card-header {
+  border-bottom: 2px solid #c9c9c9;
+  justify-content: space-evenly;
+}
 .card-header .card-title {
   text-align: center;
-  font-size: 2.5rem;
-  border-bottom: 2px solid #c9c9c9;
+  font-size: 2rem;
+  margin-left: 10rem;
 }
 
+.item__carrinho {
+  border-bottom: 2px solid #c9c9c9;
+}
 .cart-car .card-body {
   padding: 0;
   margin: 0;
-  border-bottom: 2px solid #c9c9c9;
   padding: 20px 0 0 0;
+}
+
+.card-body .cart-title-car {
+  font-size: 1rem;
 }
 .cart-input {
   padding: 20px 0 0 20px;
+  font-size: 1rem;
+}
+
+.btn-remove .remove {
+  cursor: pointer;
+  font-size: 1rem;
 }
 
 .input-group .btn {
@@ -458,7 +481,7 @@
   border: none;
   background-color: transparent;
   font-weight: 400;
-  font-size: 1.5rem;
+  font-size: 1rem;
   line-height: 20px;
   margin-top: 15px;
   margin-right: 13px;
@@ -466,12 +489,29 @@
 
 .card-footer {
   font-size: 1.5rem;
+  line-height: 0.8rem;
+  padding: 1rem;
 }
 
 .card-footer .total-sub {
   color: #dc3545;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
+.card-footer .sub-title,
+.total-title,
+.total-price {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.total-price {
+  color: green;
+}
+.cart-button .btn {
+  font-size: 1rem;
+}
 // animation keyframes
 @keyframes colos {
   0% {
