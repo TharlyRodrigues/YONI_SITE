@@ -56,7 +56,7 @@ function loadSliderItems(comboItems) {
       if (itemsPerSlide === 4) {
         col.classList.add("col", "col-12", "col-md-3");
       } else if (itemsPerSlide === 2) {
-        col.classList.add("col", "col-12", "col-md-6");
+        col.classList.add("col", "col-12", "col-md-4");
       } else if (itemsPerSlide === 1) {
         col.classList.add("col", "col-12");
       }
@@ -81,14 +81,14 @@ function loadSliderItems(comboItems) {
             <p class="h5 preco">R$ ${item.price.toFixed(2)}
               <span class="text-muted" style="font-size: 0.8rem">no pix</span>
             </p>
-            <a class="btn-modal ${item.estoque === 0 ? "disabled-link" : ""}" 
+            <a class="btn-modal detalhes${item.estoque === 0 ? "disabled-link" : ""}" 
               ${item.estoque > 0 ? `onclick='openModal(${JSON.stringify(item)})'` : ""}
               data-id="${item.id}">
               <i class="fa-solid fa-eye"></i> Mais Detalhes 
             </a>
             <!-- Botão de compra -->
-          <button class="btn btn-danger add-card" data-id="${item.id}" id="btnCompra${item.id}" ${item.estoque === 0 ? "disabled" : ""}>
-            <i class="fa-solid fa-cart-shopping"></i> ${item.estoque === 0 ? "Sem Estoque" : "COMPRAR"}
+          <button class="btn btn-danger add-card btn-comprar" data-id="${item.id}" id="btnCompra${item.id}" ${item.estoque === 0 ? "disabled" : ""}>
+            ${item.estoque === 0 ? "Sem Estoque" : `<i class="fa-solid fa-cart-shopping"></i> COMPRAR`}
           </button>
           </div>
         </div>
@@ -130,7 +130,7 @@ function displayItems(itemsToDisplay) {
     itemElement.classList.add(
       "col-12",
       "col-sm-6",
-      "col-md-6",
+      "col-md-4",
       "col-lg-3",
       "mb-4",
       "d-flex",
@@ -165,8 +165,8 @@ function displayItems(itemsToDisplay) {
               <i class="fa-solid fa-eye"></i> Mais Detalhes 
             </a>
           <!-- Botão de compra -->
-          <button class="btn btn-danger add-card" data-id="${item.id}" id="btnCompra${item.id}" ${item.estoque === 0 ? "disabled" : ""}>
-            <i class="fa-solid fa-cart-shopping"></i> ${item.estoque === 0 ? "Sem Estoque" : "COMPRAR"}
+          <button class="btn btn-danger add-card btn-comprar" data-id="${item.id}" id="btnCompra${item.id}" ${item.estoque === 0 ? "disabled" : ""}>
+            ${item.estoque === 0 ? "Sem Estoque" : `<i class="fa-solid fa-cart-shopping"></i> COMPRAR`}
           </button>
         </div>
       </div>

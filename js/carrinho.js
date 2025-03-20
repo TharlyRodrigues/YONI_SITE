@@ -42,7 +42,7 @@ function renderCartItems() {
 
   cartItems.forEach((item, index) => {
     const cartItemHTML = `
-      <div class="row align-items-center mb-3">
+      <div class="row align-items-center mb-3 .item__carrinho">
         <div class="col-5">
           <img src="${item.image}" alt="${item.name}" class="img-fluid img-cart-car">
         </div>
@@ -51,14 +51,14 @@ function renderCartItems() {
         <span class="text-muted">R$ ${item.price.toFixed(2)}</span>
         </div>
         <div class="row cart-input justify-content-between align-items-center">
-          <div class="col-10 col-md-5 btn-quantyti">
+          <div class="col-8 col-md-5 btn-quantyti">
             <div class="input-group">
               <button class="btn btn-outline-danger decrement" data-index="${index}">-</button>
               <span class="form-control text-center" id="quantity">${item.quantity}</span>
               <button class="btn btn-outline-secondary increment" data-index="${index}">+</button>
             </div>
           </div>
-          <div class="col-2 text-end">
+          <div class="col-2 text-end btn-remove">
             <i class="fas fa-trash-alt text-danger fa-2x remove" data-index="${index}"></i>
           </div>
         </div>

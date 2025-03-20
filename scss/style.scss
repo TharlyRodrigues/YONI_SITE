@@ -114,7 +114,6 @@
 .nav .nav-item .nav-link {
   font-size: 1.2rem;
 }
-// carinho style
 
 //menu-mobile
 #mobile-menu-button {
@@ -201,7 +200,7 @@
   justify-content: space-between;
   padding: 10px;
   border: none;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   background-color: #fff;
   line-height: 1;
 }
@@ -233,7 +232,7 @@
 }
 
 .card-title {
-  min-height: 60px;
+  min-height: 6rem;
   font-size: 1rem;
   line-height: 1.2;
 }
@@ -582,5 +581,16 @@
 
   .cart-car {
     width: 100%;
+  }
+
+  .cart-title-car {
+    font-size: 1rem;
+  }
+
+  .btn-remove .remove {
+    font-size: 1rem;
+  }
+  .cart-car .card-title {
+    font-size: 1.5rem;
   }
 }
