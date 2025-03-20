@@ -193,3 +193,20 @@ document.addEventListener("DOMContentLoaded", () => {
     updateCartTotal(); // Atualiza o total do carrinho
   }
 });
+
+// Página do carrinho - Redirecionar para finalizar compra
+document.getElementById("checkout").addEventListener("click", () => {
+  // Recupera os itens do carrinho do localStorage
+  let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+  if (cartItems.length === 0) {
+    alert("Seu carrinho está vazio!");
+    return;
+  }
+
+  // Salva os itens no localStorage para recuperar na página de finalização de compra
+  localStorage.setItem("checkoutItems", JSON.stringify(cartItems));
+
+  // Redireciona para a página de finalização de compra
+  window.location.href = "finalizar_compra/index.html";
+});

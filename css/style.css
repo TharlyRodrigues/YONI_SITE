@@ -524,6 +524,10 @@
   font-size: 1rem;
 }
 
+#Limpar_carrinho-todo {
+  cursor: pointer;
+}
+
 @keyframes colos {
   0% {
     color: var(--bs-primary);
