@@ -8,6 +8,41 @@ const totalPriceElement = document.querySelector(".total-price"); // Total do ca
 const totalSubElement = document.querySelector(".total-sub"); // Subtotal
 const cartCounter = document.querySelector(".quantyti-shop"); // Contador de itens no carrinho
 
+// Criar um container de alertas no topo da página
+const alertContainer = document.createElement("div");
+alertContainer.id = "alertContainer";
+alertContainer.style.position = "fixed";
+alertContainer.style.top = "10px";
+alertContainer.style.left = "50%";
+alertContainer.style.transform = "translateX(-50%)";
+alertContainer.style.zIndex = "1050";
+alertContainer.style.width = "90%";
+alertContainer.style.maxWidth = "500px";
+document.body.prepend(alertContainer);
+
+const showAlert = (message, type) => {
+  const alertDiv = document.createElement("div");
+  alertDiv.className = `alert alert-${type} alert-dismissible fade show text-center`;
+  alertDiv.setAttribute("role", "alert");
+  alertDiv.style.borderRadius = "5px";
+  alertDiv.style.padding = "15px";
+  alertDiv.style.fontWeight = "bold";
+  alertDiv.innerHTML = `
+      ${message}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    `;
+  alertContainer.appendChild(alertDiv);
+
+  // Fecha o alerta após 3 segundos
+  setTimeout(() => {
+    alertDiv.classList.remove("show");
+    alertDiv.classList.add("fade");
+    setTimeout(() => {
+      alertDiv.remove();
+    }, 150); // Tempo para a animação de fade
+  }, 3000);
+};
+
 // Atualiza o contador do carrinho
 function updateCartCount() {
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
@@ -34,9 +69,9 @@ function updateCartTotal() {
 // Renderiza os itens do carrinho
 function renderCartItems() {
   cartBody.innerHTML = "";
-
   if (cartItems.length === 0) {
     cartBody.innerHTML = "<p class='text-center'>Seu carrinho está vazio.</p>";
+    showAlert("Seu carrinho está vazio.", "info"); // Exibe um alerta
     return;
   }
 
@@ -92,8 +127,11 @@ function renderCartItems() {
   document.querySelectorAll(".remove").forEach((button) => {
     button.addEventListener("click", (event) => {
       const index = event.target.dataset.index;
+      const removedItem = cartItems[index]; // Obtém o item removido
       cartItems.splice(index, 1);
       updateCart();
+      // Exibe o alerta informando que o item foi removido
+      showAlert(" foi removido do carrinho.", "danger");
     });
   });
 }
@@ -160,6 +198,8 @@ document.addEventListener("click", (event) => {
     };
 
     addToCart(item);
+    // Exibe o alerta informando que o item foi adicionado
+    showAlert("foi adicionado ao carrinho!", "success");
   }
 });
 
@@ -181,7 +221,6 @@ document
     };
 
     addToCart(item);
-    updateAllQuantities();
   });
 
 // Carregar os itens do carrinho do localStorage ao iniciar a página
@@ -200,12 +239,12 @@ document.getElementById("checkout").addEventListener("click", () => {
   let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
   if (cartItems.length === 0) {
-    alert("Seu carrinho está vazio!");
+    showAlert("Seu carrinho está vazio!", "warning"); // Usando showAlert
     return;
   }
 
   // Salva os itens no localStorage para recuperar na página de finalização de compra
-  localStorage.setItem("checkoutItems", JSON.stringify(cartItems));
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
 
   // Redireciona para a página de finalização de compra
   window.location.href = "finalizar_compra/index.html";

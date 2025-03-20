@@ -9,7 +9,41 @@ document.addEventListener("DOMContentLoaded", () => {
   const resumoPix = document.getElementById("resumoPix");
   const limparCarrinhoBtn = document.getElementById("Limpar_carrinho-todo");
 
-  // Atualiza a exibição do carrinho
+  // Criar um container de alertas no topo da página
+  const alertContainer = document.createElement("div");
+  alertContainer.id = "alertContainer";
+  alertContainer.style.position = "fixed";
+  alertContainer.style.top = "10px";
+  alertContainer.style.left = "50%";
+  alertContainer.style.transform = "translateX(-50%)";
+  alertContainer.style.zIndex = "1050";
+  alertContainer.style.width = "90%";
+  alertContainer.style.maxWidth = "500px";
+  document.body.prepend(alertContainer);
+
+  const showAlert = (message, type) => {
+    const alertDiv = document.createElement("div");
+    alertDiv.className = `alert alert-${type} alert-dismissible fade show text-center`;
+    alertDiv.setAttribute("role", "alert");
+    alertDiv.style.borderRadius = "5px";
+    alertDiv.style.padding = "15px";
+    alertDiv.style.fontWeight = "bold";
+    alertDiv.innerHTML = `
+      ${message}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    `;
+    alertContainer.appendChild(alertDiv);
+
+    // Fecha o alerta após 3 segundos
+    setTimeout(() => {
+      alertDiv.classList.remove("show");
+      alertDiv.classList.add("fade");
+      setTimeout(() => {
+        alertDiv.remove();
+      }, 150); // Tempo para a animação de fade
+    }, 3000);
+  };
+
   const updateCartDisplay = () => {
     if (cartItems.length === 0) {
       cartItemsContainer.innerHTML = `<tr><td colspan="4" class="text-center">Seu carrinho está vazio.</td></tr>`;
@@ -25,30 +59,30 @@ document.addEventListener("DOMContentLoaded", () => {
     cartItemsContainer.innerHTML = cartItems
       .map(
         (item, index) => `
-          <tr>
-            <td class="d-flex align-items-center">
-              <img src="${item.image}" class="me-3" alt="${item.name}" style="width: 60px; height: auto;" />
-              <div>
-                <strong>${item.name}</strong>
-                <p class="text-muted mb-0">${item.description || ""}</p>
-              </div>
-            </td>
-            <td>
-              <div class="input-group">
-                <button class="btn btn-outline-secondary decrement" data-index="${index}">-</button>
-                <input type="text" class="form-control text-center" value="${item.quantity}" style="width: 50px" readonly />
-                <button class="btn btn-outline-secondary increment" data-index="${index}">+</button>
-              </div>
-            </td>
-            <td>
-              <div class="price-final">
-                <span class="d-block">A prazo: <strong>R$ ${(item.price * item.quantity * 1.25).toFixed(2)}</strong></span>
-                <span class="text-danger d-block">No PIX: <strong>R$ ${(item.price * item.quantity).toFixed(2)}</strong></span>
-              </div>
-              <i class="fas fa-trash-alt text-danger fa-2x remove" data-index="${index}"></i>
-            </td>
-          </tr>
-        `
+      <tr>
+        <td class="d-flex align-items-center">
+          <img src="${item.image}" class="me-3" alt="${item.name}" style="width: 60px; height: auto;" />
+          <div>
+            <strong>${item.name}</strong>
+            <p class="text-muted mb-0">${item.description || ""}</p>
+          </div>
+        </td>
+        <td>
+          <div class="input-group">
+            <button class="btn btn-outline-secondary decrement" data-index="${index}">-</button>
+            <input type="text" class="form-control text-center" value="${item.quantity}" style="width: 50px" readonly />
+            <button class="btn btn-outline-secondary increment" data-index="${index}">+</button>
+          </div>
+        </td>
+        <td>
+          <div class="price-final">
+            <span class="d-block">A prazo: <strong>R$ ${(item.price * item.quantity * 1.25).toFixed(2)}</strong></span>
+            <span class="text-danger d-block">No PIX: <strong>R$ ${(item.price * item.quantity).toFixed(2)}</strong></span>
+          </div>
+          <i class="fas fa-trash-alt text-danger fa-2x remove" data-index="${index}"></i>
+        </td>
+      </tr>
+    `
       )
       .join("");
 
@@ -63,10 +97,9 @@ document.addEventListener("DOMContentLoaded", () => {
     totalItens.textContent = cartItems.length;
     resumoSubtotalPrazo.textContent = `R$ ${totalComAcrescimo.toFixed(2)}`;
     resumoAPrazo.textContent = `R$ ${totalComAcrescimo.toFixed(2)}`;
-    resumoPix.textContent = `No PIX: R$ ${total.toFixed(2)}`;
+    resumoPix.textContent = `No PIX: ${total.toFixed(2)}`;
 
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
-
     attachEventListeners();
   };
 
@@ -76,6 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const index = event.target.dataset.index;
         cartItems[index].quantity++;
         updateCartDisplay();
+        showAlert("Quantidade aumentada!", "info");
       });
     });
 
@@ -84,8 +118,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const index = event.target.dataset.index;
         if (cartItems[index].quantity > 1) {
           cartItems[index].quantity--;
+          showAlert("Quantidade reduzida!", "info");
         } else {
           cartItems.splice(index, 1);
+          showAlert("Item removido do carrinho!", "warning");
         }
         updateCartDisplay();
       });
@@ -96,42 +132,31 @@ document.addEventListener("DOMContentLoaded", () => {
         const index = event.target.dataset.index;
         cartItems.splice(index, 1);
         updateCartDisplay();
+        showAlert("Item removido do carrinho!", "danger");
       });
     });
   };
 
-  // Função para limpar todo o carrinho
   limparCarrinhoBtn.addEventListener("click", (event) => {
     event.preventDefault();
-    if (confirm("Tem certeza que deseja limpar o carrinho?")) {
-      localStorage.removeItem("cartItems");
-      cartItems = [];
-      updateCartDisplay();
-    }
+    localStorage.removeItem("cartItems");
+    cartItems = [];
+    updateCartDisplay();
+    showAlert("🛒 Carrinho limpo com sucesso!", "warning");
   });
 
-  // Finalizar compra
   const finalizarCompra = () => {
-    alert("Compra finalizada com sucesso!");
-
-    // Limpa os itens do carrinho no localStorage
+    showAlert("🎉 Compra finalizada com sucesso!", "success");
     localStorage.removeItem("cartItems");
-
-    // Esvazia o array cartItems
     cartItems = [];
-
-    // Atualiza a interface do carrinho
     updateCartDisplay();
-
-    // Redireciona para a página inicial após um pequeno delay
     setTimeout(() => {
       window.location.href = "../index.html";
-    }, 500);
+    }, 3000);
   };
 
   document
     .getElementById("finalizarCompra")
     .addEventListener("click", finalizarCompra);
-
   updateCartDisplay();
 });

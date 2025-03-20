@@ -524,10 +524,28 @@
   font-size: 1rem;
 }
 
+.header-finalizar {
+  display: flex;
+  justify-content: space-between;
+}
+
 #Limpar_carrinho-todo {
   cursor: pointer;
 }
 
+.toast {
+  min-width: 250px;
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 @keyframes colos {
   0% {
     color: var(--bs-primary);
@@ -634,5 +652,9 @@
   }
   .cart-car .card-title {
     font-size: 1.5rem;
+  }
+  .header-finalizar {
+    display: block;
+    justify-content: space-between;
   }
 }
