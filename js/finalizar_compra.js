@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
         (item, index) => `
       <tr>
         <td class="d-flex align-items-center">
-          <img src="${item.image}" class="me-3" alt="${item.name}" style="width: 60px; height: auto;" />
+          <img src="${item.image}" class="me-3" alt="${item.name}" style="width: 100px; height: auto;" />
           <div>
             <strong>${item.name}</strong>
             <p class="text-muted mb-0">${item.description || ""}</p>
@@ -69,17 +69,17 @@ document.addEventListener("DOMContentLoaded", () => {
         </td>
         <td>
           <div class="input-group">
-            <button class="btn btn-outline-secondary decrement" data-index="${index}">-</button>
-            <input type="text" class="form-control text-center" value="${item.quantity}" style="width: 50px" readonly />
+            <button class="btn btn-outline-danger decrement" data-index="${index}">-</button>
+            <input type="text" class="form-control text-center value bg-transparent" value="${item.quantity}" style="width: 2px" readonly />
             <button class="btn btn-outline-secondary increment" data-index="${index}">+</button>
           </div>
         </td>
         <td>
-          <div class="price-final">
+          <div class="price-final d-flex gap-2 align-items-center">
             <span class="d-block">A prazo: <strong>R$ ${(item.price * item.quantity * 1.25).toFixed(2)}</strong></span>
             <span class="text-danger d-block">No PIX: <strong>R$ ${(item.price * item.quantity).toFixed(2)}</strong></span>
-          </div>
-          <i class="fas fa-trash-alt text-danger fa-2x remove" data-index="${index}"></i>
+            <i class="fas fa-trash-alt text-danger remove" data-index="${index}"></i>
+            </div>
         </td>
       </tr>
     `

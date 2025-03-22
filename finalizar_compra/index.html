@@ -29,7 +29,7 @@
       <span class="n-pedido"
         >Numero do Pedido: <span id="n-pedido-js"> #1545-5 </span></span
       >
-      <div class="row">
+      <div class="row card-row">
         <!-- Lista de produtos -->
         <div class="col-12 col-lg-9">
           <div class="card-final">
@@ -47,14 +47,16 @@
                 </tbody>
               </table>
               <div class="d-flex justify-content-between">
-                <span class="text-danger" id="Limpar_carrinho-todo"
+                <span
+                  class="text-danger text-decoration-none"
+                  id="Limpar_carrinho-todo"
                   ><i class="fas fa-trash"></i> Limpar carrinho</span
                 >
                 <h5>
                   Subtotal a prazo: <strong id="subtotalPrazo">R$ 0,00</strong>
                 </h5>
               </div>
-              <p class="text-danger mt-2">
+              <p class="text-danger mt-2 text-end">
                 <strong id="totalPix">No PIX: R$ 0,00</strong>
               </p>
             </div>
@@ -64,7 +66,7 @@
         <!-- Resumo da compra -->
         <div class="col-lg-3">
           <div class="card-cupom mb-3">
-            <div class="card-header">
+            <div class="card-header-cupom">
               <strong>Vale-presente ou Cupom de Desconto</strong>
             </div>
             <div class="card-body">
@@ -95,7 +97,7 @@
               <p class="mt-3">
                 A prazo: <strong id="resumoAPrazo">R$ 0,00</strong>
               </p>
-              <p class="text-danger">
+              <p class="text-danger text-decoration-none">
                 <strong id="resumoPix">No PIX: R$ 0,00</strong>
               </p>
               <button class="btn btn-danger w-100" id="finalizarCompra">
