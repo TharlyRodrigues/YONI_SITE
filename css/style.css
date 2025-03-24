@@ -484,7 +484,6 @@
 
 #quantity {
   width: 40px;
-  min-width: 40px;
   height: 40px;
   padding: 0;
   text-align: center;
@@ -493,8 +492,7 @@
   font-weight: 400;
   font-size: 1rem;
   line-height: 20px;
-  margin-top: 15px;
-  margin-right: 13px;
+  margin-top: 12px;
 }
 
 .card-footer {

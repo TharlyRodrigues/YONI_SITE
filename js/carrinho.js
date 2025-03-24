@@ -86,7 +86,7 @@ function renderCartItems() {
         <span class="text-muted">R$ ${item.price.toFixed(2)}</span>
         </div>
         <div class="row cart-input justify-content-between align-items-center">
-          <div class="col-8 col-md-5 btn-quantyti">
+          <div class="col-6 col-md-4 btn-quantyti">
             <div class="input-group">
               <button class="btn btn-outline-danger decrement" data-index="${index}">-</button>
               <span class="form-control text-center" id="quantity">${item.quantity}</span>

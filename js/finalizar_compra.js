@@ -160,3 +160,89 @@ document.addEventListener("DOMContentLoaded", () => {
     .addEventListener("click", finalizarCompra);
   updateCartDisplay();
 });
+
+// Função para alterar o número do pedido
+function alterarNumeroPedido(novoNumero) {
+  // Seleciona o elemento que contém o número do pedido
+  const elementoNumeroPedido = document.getElementById("n-pedido-js");
+
+  // Verifica se o elemento existe antes de tentar alterá-lo
+  if (elementoNumeroPedido) {
+    // Atualiza o texto do elemento com o novo número
+    elementoNumeroPedido.textContent = novoNumero;
+  } else {
+    console.error("Elemento do número do pedido não encontrado!");
+  }
+}
+
+// Exemplo de uso:
+// alterarNumeroPedido('#1545-6');
+function gerarNumeroPedidoAleatorio() {
+  const prefixo = "#" + Math.floor(Math.random() * 10000); // Gera um número entre 0 e 9999
+  const sufixo = "-" + Math.floor(Math.random() * 10); // Gera um dígito entre 0 e 9
+  return prefixo + sufixo; // Formato: #XXXX-X
+}
+
+alterarNumeroPedido(gerarNumeroPedidoAleatorio());
+
+// função de desconto da loja
+const cupomInput = document.getElementById("cupom");
+const cupomBtn = document.getElementById("cupom-btn");
+
+const CUPONS_VALIDOS = {
+  YONI10: 0.1,
+  SEULUKAS10: 0.1,
+};
+
+let descontoAplicado = false;
+let percentualDescontoAtual = 0;
+
+// Função para aplicar o desconto
+function aplicarDesconto() {
+  const codigoCupom = cupomInput.value.trim().toUpperCase();
+
+  if (descontoAplicado) {
+    showAlert(
+      `Desconto de ${percentualDescontoAtual * 100}% já foi aplicado!`,
+      "info"
+    );
+    return;
+  }
+
+  if (CUPONS_VALIDOS.hasOwnProperty(codigoCupom)) {
+    percentualDescontoAtual = CUPONS_VALIDOS[codigoCupom];
+    const total = cartItems.reduce(
+      (sum, item) => sum + item.price * item.quantity,
+      0
+    );
+    const totalComDesconto = total * (1 - percentualDescontoAtual);
+    const totalComAcrescimoComDesconto = totalComDesconto * 1.25;
+
+    // Atualiza os valores exibidos
+    subtotalPrazo.textContent = `R$ ${totalComAcrescimoComDesconto.toFixed(2)}`;
+    totalPix.textContent = `No PIX: R$ ${totalComDesconto.toFixed(2)}`;
+    resumoSubtotalPrazo.textContent = `R$ ${totalComAcrescimoComDesconto.toFixed(2)}`;
+    resumoAPrazo.textContent = `R$ ${totalComAcrescimoComDesconto.toFixed(2)}`;
+    resumoPix.textContent = `No PIX: ${totalComDesconto.toFixed(2)}`;
+
+    descontoAplicado = true;
+    showAlert(
+      `🎉 Cupom aplicado! ${percentualDescontoAtual * 100}% de desconto ativado.`,
+      "success"
+    );
+
+    // Adiciona badge visual no resumo
+    const badgeDesconto = document.createElement("span");
+    badgeDesconto.className = "badge bg-success ms-2";
+    badgeDesconto.textContent = `${percentualDescontoAtual * 100}% OFF`;
+    document.querySelector("#resumoPix").parentNode.appendChild(badgeDesconto);
+  } else {
+    showAlert("Cupom inválido!", "danger");
+  }
+}
+
+// Event listeners (mantidos do código anterior)
+cupomBtn.addEventListener("click", aplicarDesconto);
+cupomInput.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") aplicarDesconto();
+});
