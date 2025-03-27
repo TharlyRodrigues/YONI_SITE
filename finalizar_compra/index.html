@@ -26,9 +26,58 @@
           <i class="fas fa-arrow-left"></i> Continuar comprando
         </a>
       </div>
-      <span class="n-pedido"
-        >Numero do Pedido: <span id="n-pedido-js"> #1545-5 </span></span
-      >
+      <span class="n-pedido-js"
+        >Numero do Pedido: <span id="n-pedido-js"></span
+      ></span>
+
+      <!-- Seção de Dados do Cliente -->
+      <div id="dadosCliente">
+        <h4 class="mb-4">Seus Dados</h4>
+        <form id="clienteForm" class="row g-3 needs-validation" novalidate>
+          <div class="col-md-6">
+            <label for="clienteNome" class="form-label">Nome Completo *</label>
+            <input type="text" class="form-control" id="clienteNome" required />
+            <div class="invalid-feedback">
+              Por favor, informe seu nome completo.
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="clienteCelular" class="form-label"
+              >Celular (com DDD) *</label
+            >
+            <input
+              type="tel"
+              class="form-control"
+              id="clienteCelular"
+              placeholder="(99) 99999-9999"
+              required
+            />
+            <div class="invalid-feedback">
+              Por favor, informe um número válido.
+            </div>
+          </div>
+          <div class="col-12">
+            <label for="clienteEndereco" class="form-label"
+              >Endereço Completo *</label
+            >
+            <textarea
+              class="form-control"
+              id="clienteEndereco"
+              rows="2"
+              required
+            ></textarea>
+            <div class="invalid-feedback">
+              Por favor, informe seu endereço completo.
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="clienteEmail" class="form-label">E-mail</label>
+            <input type="email" class="form-control" id="clienteEmail" />
+            <div class="form-text">Opcional - para receber atualizações</div>
+          </div>
+        </form>
+      </div>
+
       <div class="row card-row">
         <!-- Lista de produtos -->
         <div class="col-12 col-lg-9">
@@ -114,5 +163,9 @@
     <script src="../js/app.js" defer></script>
     <script src="../js/carrinho.js" defer></script>
     <script src="../js/finalizar_compra.js" defer></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
   </body>
 </html>

@@ -146,13 +146,13 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const finalizarCompra = () => {
-    showAlert("🎉 Compra finalizada com sucesso!", "success");
+    // showAlert("🎉 Compra finalizada com sucesso!", "success");
     localStorage.removeItem("cartItems");
     cartItems = [];
     updateCartDisplay();
     setTimeout(() => {
       window.location.href = "../index.html";
-    }, 3000);
+    }, 2000);
   };
 
   document
@@ -246,3 +246,75 @@ cupomBtn.addEventListener("click", aplicarDesconto);
 cupomInput.addEventListener("keypress", (e) => {
   if (e.key === "Enter") aplicarDesconto();
 });
+
+//
+//📩email js finalizar compra
+(function () {
+  // https://dashboard.emailjs.com/admin/account
+  emailjs.init({
+    publicKey: "j6o4UIA6aWu8PZG0e",
+  });
+})();
+function finalizarCompra() {
+  const nome = document.getElementById("clienteNome").value;
+  const celular = document.getElementById("clienteCelular").value;
+  const endereco = document.getElementById("clienteEndereco").value;
+  const email =
+    document.getElementById("clienteEmail").value || "Não informado";
+
+  if (!nome || !celular || !endereco) {
+    showAlert("⚠️ Preencha todos os campos obrigatórios!", "danger");
+    return;
+  }
+
+  const pedidoNumero = document.getElementById("n-pedido-js").textContent;
+  const totalCarrinho = document.getElementById("subtotalPrazo").textContent;
+  const totalPix = document.getElementById("totalPix").textContent;
+
+  const itensCarrinho = cartItems
+    .map((item) => {
+      return `${item.name} - Quantidade: ${item.quantity} - Valor: R$ ${(item.price * item.quantity).toFixed(2)}`;
+    })
+    .join("\n");
+
+  const templateParams = {
+    pedido_numero: pedidoNumero,
+    nome_cliente: nome,
+    celular_cliente: celular,
+    endereco_cliente: endereco,
+    email_cliente: email,
+    itens_carrinho: itensCarrinho,
+    total_carrinho: totalCarrinho,
+    total_pix: totalPix,
+  };
+
+  // Enviar o e-mail usando emailjs
+  emailjs
+    .send("service_bzdzcij", "template_qsmbpva", templateParams)
+    .then((response) => {
+      showAlert("🎉 Pedido enviado com sucesso!", "success");
+
+      // Limpa o localStorage e redefine o cartItems
+      localStorage.removeItem("cartItems");
+      cartItems = [];
+
+      // Atualiza o display e reanexa os eventListeners
+      updateCartDisplay();
+
+      // Gera um novo número de pedido
+      alterarNumeroPedido(gerarNumeroPedidoAleatorio());
+
+      setTimeout(() => {
+        window.location.href = "../index.html";
+      }, 2000);
+    })
+    .catch((error) => {
+      console.error("Erro ao enviar e-mail:", error);
+      // showAlert("❌ Erro ao enviar o pedido. Tente novamente.", "danger");
+    });
+}
+
+// Garantir que o eventListener seja definido apenas uma vez
+document
+  .getElementById("finalizarCompra")
+  .addEventListener("click", finalizarCompra);

@@ -5,7 +5,7 @@ let filteredItems = [];
 
 // Função para carregar os dados do arquivo JSON
 function loadItems() {
-  fetch("produtos.json")
+  fetch("../produtos.json")
     .then((response) => response.json())
     .then((data) => {
       allItems = data;

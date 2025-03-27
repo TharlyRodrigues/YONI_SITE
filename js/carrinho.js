@@ -46,11 +46,19 @@ const showAlert = (message, type) => {
 // Atualiza o contador do carrinho
 function updateCartCount() {
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
-  cartCounter.textContent = totalItems;
+
+  if (cartCounter) {
+    // Verifica se o elemento existe
+    cartCounter.textContent = totalItems;
+  }
+
   // Atualiza outros elementos que exibem a quantidade
   const otherQuantityElements = document.querySelectorAll(".quantyti-shop");
   otherQuantityElements.forEach((element) => {
-    element.textContent = totalItems;
+    if (element) {
+      // Verifica se o elemento existe
+      element.textContent = totalItems;
+    }
   });
 }
 
@@ -234,18 +242,25 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Página do carrinho - Redirecionar para finalizar compra
-document.getElementById("checkout").addEventListener("click", () => {
-  // Recupera os itens do carrinho do localStorage
-  let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+const checkoutButton = document.getElementById("checkout");
 
-  if (cartItems.length === 0) {
-    showAlert("Seu carrinho está vazio!", "warning"); // Usando showAlert
-    return;
-  }
+if (checkoutButton) {
+  // Verifica se o botão existe antes de adicionar o evento
+  checkoutButton.addEventListener("click", () => {
+    // Recupera os itens do carrinho do localStorage
+    let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
-  // Salva os itens no localStorage para recuperar na página de finalização de compra
-  localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    if (cartItems.length === 0) {
+      showAlert("Seu carrinho está vazio!", "warning"); // Usando showAlert
+      return;
+    }
 
-  // Redireciona para a página de finalização de compra
-  window.location.href = "finalizar_compra/index.html";
-});
+    // Salva os itens no localStorage para recuperar na página de finalização de compra
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+    // Redireciona para a página de finalização de compra
+    window.location.href = "finalizar_compra/index.html";
+  });
+} else {
+  console.warn("O botão de checkout não foi encontrado.");
+}
