@@ -1,320 +1,445 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Constantes e configurações
+  const TAXA_ACRESCIMO = 1.25;
+  const CUPONS_VALIDOS = {
+    YONI10: 0.1,
+    SEULUKAS10: 0.1,
+  };
+  const ALERT_DISPLAY_TIME = 3000;
+
+  // Estado do carrinho
   let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-  const cartItemsContainer = document.getElementById("cartItems");
-  const subtotalPrazo = document.getElementById("subtotalPrazo");
-  const totalPix = document.getElementById("totalPix");
-  const totalItens = document.getElementById("totalItens");
-  const resumoSubtotalPrazo = document.getElementById("resumoSubtotalPrazo");
-  const resumoAPrazo = document.getElementById("resumoAPrazo");
-  const resumoPix = document.getElementById("resumoPix");
-  const limparCarrinhoBtn = document.getElementById("Limpar_carrinho-todo");
+  let descontoAplicado = false;
+  let percentualDescontoAtual = 0;
 
-  // Criar um container de alertas no topo da página
-  const alertContainer = document.createElement("div");
-  alertContainer.id = "alertContainer";
-  alertContainer.style.position = "fixed";
-  alertContainer.style.top = "10px";
-  alertContainer.style.left = "50%";
-  alertContainer.style.transform = "translateX(-50%)";
-  alertContainer.style.zIndex = "1050";
-  alertContainer.style.width = "90%";
-  alertContainer.style.maxWidth = "500px";
-  document.body.prepend(alertContainer);
+  // Elementos DOM
+  const elements = {
+    cartItemsContainer: document.getElementById("cartItems"),
+    subtotalPrazo: document.getElementById("subtotalPrazo"),
+    totalPix: document.getElementById("totalPix"),
+    totalItens: document.getElementById("totalItens"),
+    resumoSubtotalPrazo: document.getElementById("resumoSubtotalPrazo"),
+    resumoAPrazo: document.getElementById("resumoAPrazo"),
+    resumoPix: document.getElementById("resumoPix"),
+    limparCarrinhoBtn: document.getElementById("Limpar_carrinho-todo"),
+    cupomInput: document.getElementById("cupom"),
+    cupomBtn: document.getElementById("cupom-btn"),
+    finalizarCompraBtn: document.getElementById("finalizarCompra"),
+    clienteNome: document.getElementById("clienteNome"),
+    clienteCelular: document.getElementById("clienteCelular"),
+    clienteEndereco: document.getElementById("clienteEndereco"),
+    clienteEmail: document.getElementById("clienteEmail"),
+    pedidoNumero: document.getElementById("n-pedido-js"),
+  };
 
-  const showAlert = (message, type) => {
+  // Inicialização
+  initAlertContainer();
+  updateCartDisplay();
+  setupEventListeners();
+  generateOrderNumber();
+  initEmailJS();
+
+  // Funções principais
+  function initAlertContainer() {
+    const alertContainer = document.createElement("div");
+    alertContainer.id = "alertContainer";
+    Object.assign(alertContainer.style, {
+      position: "fixed",
+      top: "10px",
+      left: "50%",
+      transform: "translateX(-50%)",
+      zIndex: "1050",
+      width: "90%",
+      maxWidth: "500px",
+    });
+    document.body.prepend(alertContainer);
+  }
+
+  function showAlert(message, type) {
+    const alertContainer = document.getElementById("alertContainer");
     const alertDiv = document.createElement("div");
+
     alertDiv.className = `alert alert-${type} alert-dismissible fade show text-center`;
     alertDiv.setAttribute("role", "alert");
-    alertDiv.style.borderRadius = "5px";
-    alertDiv.style.padding = "15px";
-    alertDiv.style.fontWeight = "bold";
+    Object.assign(alertDiv.style, {
+      borderRadius: "5px",
+      padding: "15px",
+      fontWeight: "bold",
+    });
+
     alertDiv.innerHTML = `
       ${message}
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     `;
+
     alertContainer.appendChild(alertDiv);
 
-    // Fecha o alerta após 3 segundos
     setTimeout(() => {
       alertDiv.classList.remove("show");
       alertDiv.classList.add("fade");
-      setTimeout(() => {
-        alertDiv.remove();
-      }, 150); // Tempo para a animação de fade
-    }, 3000);
-  };
+      setTimeout(() => alertDiv.remove(), 150);
+    }, ALERT_DISPLAY_TIME);
+  }
 
-  const updateCartDisplay = () => {
+  function calculateTotals() {
+    const subtotal = cartItems.reduce(
+      (sum, item) => sum + item.price * item.quantity,
+      0
+    );
+    const subtotalComDesconto = subtotal * (1 - percentualDescontoAtual);
+
+    return {
+      subtotal: subtotal.toFixed(2),
+      subtotalComDesconto: subtotalComDesconto.toFixed(2),
+      subtotalComAcrescimo: (subtotalComDesconto * TAXA_ACRESCIMO).toFixed(2),
+      totalItens: cartItems.length,
+    };
+  }
+
+  function updateCartDisplay() {
     if (cartItems.length === 0) {
-      cartItemsContainer.innerHTML = `<tr><td colspan="4" class="text-center">Seu carrinho está vazio.</td></tr>`;
-      subtotalPrazo.textContent = "R$ 0,00";
-      totalPix.textContent = "No PIX: R$ 0,00";
-      totalItens.textContent = "0";
-      resumoSubtotalPrazo.textContent = "R$ 0,00";
-      resumoAPrazo.textContent = "R$ 0,00";
-      resumoPix.textContent = "No PIX: R$ 0,00";
+      renderEmptyCart();
+      resetTotals();
       return;
     }
 
-    cartItemsContainer.innerHTML = cartItems
+    renderCartItems();
+    updateTotals();
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }
+
+  function renderEmptyCart() {
+    elements.cartItemsContainer.innerHTML = `
+      <tr>
+        <td colspan="4" class="text-center">Seu carrinho está vazio.</td>
+      </tr>
+    `;
+  }
+
+  function resetTotals() {
+    const zeroValues = {
+      subtotalPrazo: "R$ 0,00",
+      totalPix: "R$ 0,00",
+      totalItens: "0",
+      resumoSubtotalPrazo: "R$ 0,00",
+      resumoAPrazo: "R$ 0,00",
+      resumoPix: "R$ 0,00",
+    };
+
+    Object.entries(zeroValues).forEach(([key, value]) => {
+      if (elements[key]) elements[key].textContent = value;
+    });
+  }
+
+  function renderCartItems() {
+    elements.cartItemsContainer.innerHTML = cartItems
       .map(
         (item, index) => `
-      <tr>
-        <td class="d-flex align-items-center">
-          <img src="${item.image}" class="me-3" alt="${item.name}" style="width: 100px; height: auto;" />
-          <div>
-            <strong>${item.name}</strong>
-            <p class="text-muted mb-0">${item.description || ""}</p>
-          </div>
-        </td>
-        <td>
-          <div class="input-group">
-            <button class="btn btn-outline-danger decrement" data-index="${index}">-</button>
-            <input type="text" class="form-control text-center value bg-transparent" value="${item.quantity}" style="width: 2px" readonly />
-            <button class="btn btn-outline-secondary increment" data-index="${index}">+</button>
-          </div>
-        </td>
-        <td>
-          <div class="price-final d-flex gap-2 align-items-center">
-            <span class="d-block">A prazo: <strong>R$ ${(item.price * item.quantity * 1.25).toFixed(2)}</strong></span>
-            <span class="text-danger d-block">No PIX: <strong>R$ ${(item.price * item.quantity).toFixed(2)}</strong></span>
-            <i class="fas fa-trash-alt text-danger remove" data-index="${index}"></i>
+        <tr>
+          <td class="d-flex align-items-center">
+            <img src="${item.image}" class="me-3" alt="${item.name}" style="width: 100px; height: auto;" />
+            <div>
+              <strong>${item.name}</strong>
+              <p class="text-muted mb-0">${item.description || ""}</p>
             </div>
-        </td>
-      </tr>
-    `
+          </td>
+          <td>
+            <div class="input-group">
+              <button class="btn btn-outline-danger decrement" data-index="${index}">-</button>
+              <input type="text" class="form-control text-center value bg-transparent" 
+                     value="${item.quantity}" style="width: 2px" readonly />
+              <button class="btn btn-outline-secondary increment" data-index="${index}">+</button>
+            </div>
+          </td>
+          <td>
+            <div class="price-final d-flex gap-2 align-items-center">
+              <span class="d-block">A prazo: <strong>R$ ${(item.price * item.quantity * TAXA_ACRESCIMO).toFixed(2)}</strong></span>
+              <span class="text-danger d-block">No PIX: <strong>R$ ${(item.price * item.quantity).toFixed(2)}</strong></span>
+              <i class="fas fa-trash-alt text-danger remove" data-index="${index}"></i>
+            </div>
+          </td>
+        </tr>
+      `
       )
       .join("");
+  }
 
-    const total = cartItems.reduce(
-      (sum, item) => sum + item.price * item.quantity,
-      0
+  function updateTotals() {
+    const { subtotalComAcrescimo, subtotalComDesconto, totalItens } =
+      calculateTotals();
+
+    const displayValues = {
+      subtotalPrazo: `R$ ${subtotalComAcrescimo}`,
+      totalPix: `R$ ${subtotalComDesconto}`,
+      totalItens: totalItens,
+      resumoSubtotalPrazo: `R$ ${subtotalComAcrescimo}`,
+      resumoAPrazo: `R$ ${subtotalComAcrescimo}`,
+      resumoPix: `${subtotalComDesconto}`,
+    };
+
+    Object.entries(displayValues).forEach(([key, value]) => {
+      if (elements[key]) elements[key].textContent = value;
+    });
+  }
+
+  function setupEventListeners() {
+    // Eventos do carrinho
+    elements.cartItemsContainer.addEventListener(
+      "click",
+      handleCartItemActions
     );
-    const totalComAcrescimo = total * 1.25;
+    elements.limparCarrinhoBtn.addEventListener("click", clearCart);
+    elements.finalizarCompraBtn.addEventListener(
+      "click",
+      handleFinalizarCompra
+    );
 
-    subtotalPrazo.textContent = `R$ ${totalComAcrescimo.toFixed(2)}`;
-    totalPix.textContent = `No PIX: R$ ${total.toFixed(2)}`;
-    totalItens.textContent = cartItems.length;
-    resumoSubtotalPrazo.textContent = `R$ ${totalComAcrescimo.toFixed(2)}`;
-    resumoAPrazo.textContent = `R$ ${totalComAcrescimo.toFixed(2)}`;
-    resumoPix.textContent = `No PIX: ${total.toFixed(2)}`;
-
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
-    attachEventListeners();
-  };
-
-  const attachEventListeners = () => {
-    document.querySelectorAll(".increment").forEach((button) => {
-      button.addEventListener("click", (event) => {
-        const index = event.target.dataset.index;
-        cartItems[index].quantity++;
-        updateCartDisplay();
-        showAlert("Quantidade aumentada!", "info");
-      });
+    // Eventos de cupom
+    elements.cupomBtn.addEventListener("click", applyDiscount);
+    elements.cupomInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") applyDiscount();
     });
+  }
 
-    document.querySelectorAll(".decrement").forEach((button) => {
-      button.addEventListener("click", (event) => {
-        const index = event.target.dataset.index;
-        if (cartItems[index].quantity > 1) {
-          cartItems[index].quantity--;
-          showAlert("Quantidade reduzida!", "info");
-        } else {
-          cartItems.splice(index, 1);
-          showAlert("Item removido do carrinho!", "warning");
-        }
-        updateCartDisplay();
-      });
-    });
+  function handleCartItemActions(e) {
+    const index = e.target.dataset.index;
+    if (!index) return;
 
-    document.querySelectorAll(".remove").forEach((button) => {
-      button.addEventListener("click", (event) => {
-        const index = event.target.dataset.index;
-        cartItems.splice(index, 1);
-        updateCartDisplay();
-        showAlert("Item removido do carrinho!", "danger");
-      });
-    });
-  };
+    if (e.target.classList.contains("increment")) {
+      cartItems[index].quantity++;
+      updateCartDisplay();
+      showAlert("Quantidade aumentada!", "info");
+    } else if (e.target.classList.contains("decrement")) {
+      handleDecrement(index);
+    } else if (e.target.classList.contains("remove")) {
+      removeItem(index);
+    }
+  }
 
-  limparCarrinhoBtn.addEventListener("click", (event) => {
-    event.preventDefault();
+  function handleDecrement(index) {
+    if (cartItems[index].quantity > 1) {
+      cartItems[index].quantity--;
+      showAlert("Quantidade reduzida!", "info");
+    } else {
+      removeItem(index);
+    }
+    updateCartDisplay();
+  }
+
+  function removeItem(index) {
+    const removedItem = cartItems.splice(index, 1)[0];
+    showAlert(`"${removedItem.name}" removido do carrinho!`, "warning");
+    updateCartDisplay();
+  }
+
+  function clearCart(e) {
+    e.preventDefault();
+    if (cartItems.length === 0) {
+      showAlert("O carrinho já está vazio!", "info");
+      return;
+    }
+
+    if (!confirm("Tem certeza que deseja limpar todo o carrinho?")) return;
+
     localStorage.removeItem("cartItems");
     cartItems = [];
+    resetDiscount();
     updateCartDisplay();
     showAlert("🛒 Carrinho limpo com sucesso!", "warning");
-  });
-
-  const finalizarCompra = () => {
-    // showAlert("🎉 Compra finalizada com sucesso!", "success");
-    localStorage.removeItem("cartItems");
-    cartItems = [];
-    updateCartDisplay();
-    setTimeout(() => {
-      window.location.href = "../index.html";
-    }, 2000);
-  };
-
-  document
-    .getElementById("finalizarCompra")
-    .addEventListener("click", finalizarCompra);
-  updateCartDisplay();
-});
-
-// Função para alterar o número do pedido
-function alterarNumeroPedido(novoNumero) {
-  // Seleciona o elemento que contém o número do pedido
-  const elementoNumeroPedido = document.getElementById("n-pedido-js");
-
-  // Verifica se o elemento existe antes de tentar alterá-lo
-  if (elementoNumeroPedido) {
-    // Atualiza o texto do elemento com o novo número
-    elementoNumeroPedido.textContent = novoNumero;
-  } else {
-    console.error("Elemento do número do pedido não encontrado!");
-  }
-}
-
-// Exemplo de uso:
-// alterarNumeroPedido('#1545-6');
-function gerarNumeroPedidoAleatorio() {
-  const prefixo = "#" + Math.floor(Math.random() * 10000); // Gera um número entre 0 e 9999
-  const sufixo = "-" + Math.floor(Math.random() * 10); // Gera um dígito entre 0 e 9
-  return prefixo + sufixo; // Formato: #XXXX-X
-}
-
-alterarNumeroPedido(gerarNumeroPedidoAleatorio());
-
-// função de desconto da loja
-const cupomInput = document.getElementById("cupom");
-const cupomBtn = document.getElementById("cupom-btn");
-
-const CUPONS_VALIDOS = {
-  YONI10: 0.1,
-  SEULUKAS10: 0.1,
-};
-
-let descontoAplicado = false;
-let percentualDescontoAtual = 0;
-
-// Função para aplicar o desconto
-function aplicarDesconto() {
-  const codigoCupom = cupomInput.value.trim().toUpperCase();
-
-  if (descontoAplicado) {
-    showAlert(
-      `Desconto de ${percentualDescontoAtual * 100}% já foi aplicado!`,
-      "info"
-    );
-    return;
   }
 
-  if (CUPONS_VALIDOS.hasOwnProperty(codigoCupom)) {
-    percentualDescontoAtual = CUPONS_VALIDOS[codigoCupom];
-    const total = cartItems.reduce(
-      (sum, item) => sum + item.price * item.quantity,
-      0
-    );
-    const totalComDesconto = total * (1 - percentualDescontoAtual);
-    const totalComAcrescimoComDesconto = totalComDesconto * 1.25;
+  function applyDiscount() {
+    const codigoCupom = elements.cupomInput.value.trim().toUpperCase();
 
-    // Atualiza os valores exibidos
-    subtotalPrazo.textContent = `R$ ${totalComAcrescimoComDesconto.toFixed(2)}`;
-    totalPix.textContent = `No PIX: R$ ${totalComDesconto.toFixed(2)}`;
-    resumoSubtotalPrazo.textContent = `R$ ${totalComAcrescimoComDesconto.toFixed(2)}`;
-    resumoAPrazo.textContent = `R$ ${totalComAcrescimoComDesconto.toFixed(2)}`;
-    resumoPix.textContent = `No PIX: ${totalComDesconto.toFixed(2)}`;
+    if (descontoAplicado) {
+      showAlert(
+        `Desconto de ${percentualDescontoAtual * 100}% já foi aplicado!`,
+        "info"
+      );
+      return;
+    }
 
-    descontoAplicado = true;
-    showAlert(
-      `🎉 Cupom aplicado! ${percentualDescontoAtual * 100}% de desconto ativado.`,
-      "success"
-    );
+    if (CUPONS_VALIDOS[codigoCupom]) {
+      percentualDescontoAtual = CUPONS_VALIDOS[codigoCupom];
+      descontoAplicado = true;
+      updateCartDisplay();
 
-    // Adiciona badge visual no resumo
+      showAlert(
+        `🎉 Cupom aplicado! ${percentualDescontoAtual * 100}% de desconto ativado.`,
+        "success"
+      );
+
+      addDiscountBadge();
+    } else {
+      showAlert("Cupom inválido ou expirado!", "danger");
+    }
+  }
+
+  function addDiscountBadge() {
     const badgeDesconto = document.createElement("span");
     badgeDesconto.className = "badge bg-success ms-2";
     badgeDesconto.textContent = `${percentualDescontoAtual * 100}% OFF`;
     document.querySelector("#resumoPix").parentNode.appendChild(badgeDesconto);
-  } else {
-    showAlert("Cupom inválido!", "danger");
-  }
-}
-
-// Event listeners (mantidos do código anterior)
-cupomBtn.addEventListener("click", aplicarDesconto);
-cupomInput.addEventListener("keypress", (e) => {
-  if (e.key === "Enter") aplicarDesconto();
-});
-
-//
-//📩email js finalizar compra
-(function () {
-  // https://dashboard.emailjs.com/admin/account
-  emailjs.init({
-    publicKey: "j6o4UIA6aWu8PZG0e",
-  });
-})();
-function finalizarCompra() {
-  const nome = document.getElementById("clienteNome").value;
-  const celular = document.getElementById("clienteCelular").value;
-  const endereco = document.getElementById("clienteEndereco").value;
-  const email =
-    document.getElementById("clienteEmail").value || "Não informado";
-
-  if (!nome || !celular || !endereco) {
-    showAlert("⚠️ Preencha todos os campos obrigatórios!", "danger");
-    return;
   }
 
-  const pedidoNumero = document.getElementById("n-pedido-js").textContent;
-  const totalCarrinho = document.getElementById("subtotalPrazo").textContent;
-  const totalPix = document.getElementById("totalPix").textContent;
+  function resetDiscount() {
+    descontoAplicado = false;
+    percentualDescontoAtual = 0;
+    elements.cupomInput.value = "";
+    const badge = document.querySelector(".badge.bg-success");
+    if (badge) badge.remove();
+  }
 
-  const itensCarrinho = cartItems
-    .map((item) => {
-      return `${item.name} - Quantidade: ${item.quantity} - Valor: R$ ${(item.price * item.quantity).toFixed(2)}`;
-    })
-    .join("\n");
+  function generateOrderNumber() {
+    const prefixo =
+      "#" +
+      Math.floor(Math.random() * 10000)
+        .toString()
+        .padStart(4, "0");
+    const sufixo = "-" + Math.floor(Math.random() * 10);
+    elements.pedidoNumero.textContent = prefixo + sufixo;
+  }
 
-  const templateParams = {
-    pedido_numero: pedidoNumero,
-    nome_cliente: nome,
-    celular_cliente: celular,
-    endereco_cliente: endereco,
-    email_cliente: email,
-    itens_carrinho: itensCarrinho,
-    total_carrinho: totalCarrinho,
-    total_pix: totalPix,
-  };
-
-  // Enviar o e-mail usando emailjs
-  emailjs
-    .send("service_bzdzcij", "template_qsmbpva", templateParams)
-    .then((response) => {
-      showAlert("🎉 Pedido enviado com sucesso!", "success");
-
-      // Limpa o localStorage e redefine o cartItems
-      localStorage.removeItem("cartItems");
-      cartItems = [];
-
-      // Atualiza o display e reanexa os eventListeners
-      updateCartDisplay();
-
-      // Gera um novo número de pedido
-      alterarNumeroPedido(gerarNumeroPedidoAleatorio());
-
-      setTimeout(() => {
-        window.location.href = "../index.html";
-      }, 2000);
-    })
-    .catch((error) => {
-      console.error("Erro ao enviar e-mail:", error);
-      // showAlert("❌ Erro ao enviar o pedido. Tente novamente.", "danger");
+  function initEmailJS() {
+    emailjs.init({
+      publicKey: "j6o4UIA6aWu8PZG0e",
     });
-}
+  }
 
-// Garantir que o eventListener seja definido apenas uma vez
-document
-  .getElementById("finalizarCompra")
-  .addEventListener("click", finalizarCompra);
+  async function handleFinalizarCompra() {
+    if (!validateForm()) return;
+
+    try {
+      await sendOrderEmail();
+      processSuccess();
+      redirectAfterSuccess();
+    } catch (error) {
+      handleOrderError(error);
+    }
+  }
+
+  function validateForm() {
+    const requiredFields = {
+      nome: elements.clienteNome.value.trim(),
+      celular: elements.clienteCelular.value.trim(),
+      endereco: elements.clienteEndereco.value.trim(),
+    };
+
+    const missingFields = Object.entries(requiredFields)
+      .filter(([_, value]) => !value)
+      .map(([field]) => field);
+
+    if (missingFields.length > 0) {
+      const fieldsText = missingFields
+        .map((f) =>
+          f === "nome" ? "Nome" : f === "celular" ? "Celular" : "Endereço"
+        )
+        .join(", ");
+
+      showAlert(`⚠️ Por favor, preencha: ${fieldsText}`, "danger");
+      return false;
+    }
+
+    // Validação básica de celular (pelo menos 11 dígitos)
+    if (requiredFields.celular.replace(/\D/g, "").length < 11) {
+      showAlert(
+        "⚠️ Celular inválido. Digite um número com DDD e 9 dígitos",
+        "danger"
+      );
+      return false;
+    }
+
+    return true;
+  }
+
+  async function sendOrderEmail() {
+    const templateParams = {
+      pedido_numero: elements.pedidoNumero.textContent,
+      nome_cliente: elements.clienteNome.value.trim(),
+      celular_cliente: elements.clienteCelular.value.trim(),
+      endereco_cliente: elements.clienteEndereco.value.trim(),
+      email_cliente: elements.clienteEmail.value.trim() || "Não informado",
+      itens_carrinho: formatCartItems(),
+      total_carrinho: elements.subtotalPrazo.textContent,
+      total_pix: elements.totalPix.textContent,
+      data_pedido: new Date().toLocaleString("pt-BR", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+      }),
+      metodo_pagamento:
+        document.querySelector('input[name="paymentMethod"]:checked')?.value ||
+        "Não especificado",
+    };
+
+    return await emailjs.send(
+      "service_bzdzcij",
+      "template_qsmbpva",
+      templateParams
+    );
+  }
+
+  function formatCartItems() {
+    return cartItems
+      .map(
+        (item) =>
+          `${item.name} (${item.quantity}x) - R$ ${(item.price * item.quantity).toFixed(2)}`
+      )
+      .join("\n");
+  }
+
+  function processSuccess() {
+    showAlert(
+      `🎉 Pedido ${elements.pedidoNumero.textContent} confirmado! Em breve entraremos em contato.`,
+      "success"
+    );
+
+    // Limpar carrinho e cupom
+    localStorage.removeItem("cartItems");
+    cartItems = [];
+    resetDiscount();
+    updateCartDisplay();
+
+    // Gerar novo número para próximo pedido
+    generateOrderNumber();
+  }
+
+  function redirectAfterSuccess() {
+    setTimeout(() => {
+      window.location.href = "../index.html";
+    }, 5000);
+  }
+
+  function handleOrderError(error) {
+    console.error("Erro no pedido:", error);
+
+    // Tentar salvar localmente em caso de falha
+    try {
+      const pendingOrder = {
+        numero: elements.pedidoNumero.textContent,
+        data: new Date().toISOString(),
+        itens: cartItems,
+        cliente: {
+          nome: elements.clienteNome.value.trim(),
+          celular: elements.clienteCelular.value.trim(),
+          email: elements.clienteEmail.value.trim(),
+        },
+        total: elements.subtotalPrazo.textContent,
+      };
+
+      localStorage.setItem("pendingOrder", JSON.stringify(pendingOrder));
+      showAlert(
+        "⚠️ Seu pedido foi salvo localmente. Entraremos em contato em breve.",
+        "warning"
+      );
+    } catch (e) {
+      console.error("Falha ao salvar pedido localmente:", e);
+      showAlert(
+        "❌ Falha ao finalizar pedido. Por favor, tente novamente ou entre em contato.",
+        "danger"
+      );
+    }
+  }
+});
