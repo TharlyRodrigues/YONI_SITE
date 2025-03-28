@@ -176,13 +176,13 @@ function displayItems(itemsToDisplay) {
   });
 }
 
-// Delegação de evento para os ícones de coração (executa apenas uma vez)
-document.addEventListener("click", (event) => {
-  if (event.target.classList.contains("coracao")) {
-    event.target.classList.toggle("fa-regular");
-    event.target.classList.toggle("fa-solid");
-  }
-});
+// // Delegação de evento para os ícones de coração (executa apenas uma vez)
+// document.addEventListener("click", (event) => {
+//   if (event.target.classList.contains("coracao")) {
+//     event.target.classList.toggle("fa-regular");
+//     event.target.classList.toggle("fa-solid");
+//   }
+// });
 
 // Função para abrir o modal com informações detalhadas do item
 function openModal(item) {

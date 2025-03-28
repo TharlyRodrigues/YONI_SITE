@@ -155,7 +155,7 @@
                 >
               </a>   
                 <a href="#" class="card-favoritos d-block d-md-none">
-                  <i class="fa-solid fa-heart fa-2x mt-2 ms-3"></i>
+                  <i class="fa-solid fa-heart fa-2x mt-2 ms-3 cart-favorites-button" id="cart-favorites-button"></i>
                 </a>  
             </div>
           </div>
@@ -187,9 +187,9 @@
                 <span class="position-absolute translate-middle badge bg-danger rounded-5 quantyti-shop">0</span>
               </a>
             </div>       
-            <div class="cart-favorite">
+            <div class="cart-favorites">
               <a href="#">
-                <i class="fa-solid fa-heart fa-2x mt-2 ms-3"></i>
+                <i class="fa-solid fa-heart fa-2x mt-2 ms-3 cart-favorites-button" id="cart-favorites-button"></i>
               </a>
             </div>       
           </div>
@@ -244,6 +244,34 @@
             <button class="btn btn-outline-secondary me-md-2 close-cart">Continuar Comprando</button>
             <button class="btn btn-success" id="checkout">Finalizar Compra</button>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- sessão cart-favoritos -->
+    <div class="container box-favoritos">
+      <div class="cart-favorite">
+        <div class="card-header-fav">
+          <span><i class="fa-solid fa-close fa-2x close-favorite"></i></span>
+          <span class="card-title-fav">Meus Favoritos</span>
+        </div>
+        <div class="card-body-fav">
+          <!-- <div class="row align-items-center mb-3">
+            <p class='text-center txt-cart-fav'>vc nao possui favoritos.</p>
+            <div class="col-3">
+              <img src="img_produtos/egg sex-Amanda_2.jpg" alt="produtos yoni" class="img-fluid img-cart-fav">
+            </div>
+            <div class="col-5">
+              <h3 class="cart-title-car">Egg Masturbador</h3>
+              <span class="text-muted">R$ 79.00</span>
+            </div>
+            <div class="col-4 box-btn__favorite">
+              <button class="btn btn-danger add-card btn-comprar" data-id="${item.id}" id="btnCompra${item.id}" ${item.estoque === 0 ? "disabled" : ""}>
+                Comprar
+              </button>
+              <i class="fas fa-trash-alt text-danger fa-2x " id="remove-favorite"></i>
+            </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -538,9 +566,10 @@
     </div>
     <div id="alertContainer"></div>
     <script src="js/bootstrap.bundle.min.js" defer></script>
+    <script src="js/app.js"></script>
     <script src="js/animac.js" defer></script>
-    <script src="js/app.js" defer></script>
     <script src="js/carrinho.js" defer></script>
     <script src="js/finalizar_compra.js"></script>
+    <script src="js/favoritos.js" defer></script>
   </body>
 </html>
