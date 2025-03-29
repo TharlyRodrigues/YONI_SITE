@@ -64,7 +64,7 @@
   align-items: center;
   text-align: center;
   background: linear-gradient(to right, #ff7ca0, var(--bs-danger));
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   padding: 10px 0 0 0;
   text-transform: uppercase;
