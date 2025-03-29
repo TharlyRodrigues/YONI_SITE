@@ -101,10 +101,11 @@
 }
 
 .sticky-element {
-  display: block;
   position: sticky;
   top: 0;
   z-index: 20;
+  transition: none;
+  will-change: transform;
 }
 
 .header-nav {

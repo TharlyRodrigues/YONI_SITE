@@ -102,10 +102,11 @@
 }
 
 .sticky-element {
-  display: block;
   position: sticky;
   top: 0;
   z-index: 20;
+  transition: none;
+  will-change: transform;
 }
 
 .header-nav {
@@ -401,6 +402,10 @@
 }
 
 /* Estilo para os cart-carrinho */
+#alertContainer {
+  z-index: 30;
+}
+
 .cart-car {
   position: fixed;
   top: 0;
