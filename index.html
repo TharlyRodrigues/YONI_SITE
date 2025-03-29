@@ -510,58 +510,45 @@
     </div> 
     
     <!-- Modal -->
-    <div
-      class="modal fade"
-      id="itemModal"
-      tabindex="-1"
-      aria-labelledby="itemModalLabel"
-      aria-hidden="true"
-    >
+    <div class="modal fade" id="itemModal" tabindex="-1" aria-labelledby="itemModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content shadow">
           <div class="modal-header">
             <h5 class="modal-title" id="itemModalLabel">Detalhes do Produto</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body d-md-flex">
             <div class="modal-img me-3">
-              <img
-              id="modalImage"
-              src=""
-              class="img-fluid mb-3"
-              alt="Imagem do Produto"
-              />
+              <img id="modalImage" src="" class="img-fluid mb-3" alt="Imagem do Produto" />
             </div>
             <div class="modal-descr">
-              <h5
-              id="modalTitle"
-              style="margin-bottom: 1; font-weight: bold"
-              ></h5>
+              <h5 id="modalTitle" style="margin-bottom: 1; font-weight: bold"></h5>
               <p id="modalDescription"></p>
-              <p><strong>Preço:</strong> R$ <span id="modalPrice"></span></p>
-              <p><strong>Desconto:</strong> <span id="modalDiscount"></span></p>
+              
+              <!-- Price Display - Improved Formatting -->
+              <div class="price-details mt-3">
+                <p class="mb-1">
+                  <strong>Desconto:</strong> <s id="modalOriginalPrice"></s>
+                  <span class="badge bg-danger ms-2" id="modalDiscount">25% OFF</span>
+                </p>
+                <p class="mb-1"><strong>Por:</strong> <span id="modalPrice" class="h5"></span></p>
+                <p class="text-muted small">No PIX: <span id="modalPixPrice" class="fw-bold text-danger"></span></p>
+              </div>
             </div>
           </div>
           <div class="modal-footer d-block d-md-flex align-items-center">
             <div class="modal-close">
-                <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-                >
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                 Fechar
               </button>
             </div>
-                <div class="modal-buy">
-                  <button type="button" class="btn add-cart btn-danger">COMPRAR</button>
-                </div>
+            <div class="modal-buy">
+              <button type="button" class="btn btn-danger add-cart" id="modalBuyButton">
+                <i class="fa-solid fa-cart-shopping"></i> COMPRAR
+              </button>
             </div>
           </div>
+        </div>
       </div>
     </div>
     <div id="alertContainer"></div>

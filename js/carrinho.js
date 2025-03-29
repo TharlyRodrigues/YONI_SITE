@@ -1,14 +1,24 @@
+// Função para formatar preços no padrão brasileiro (R$ 19,99)
+function formatPrice(price) {
+  return parseFloat(price).toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+}
+
 // Variáveis do carrinho
 let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-const cartIcons = document.querySelectorAll(".cart-compras"); // Ícones do carrinho
-const cartCar = document.querySelector(".cart-car"); // Janela do carrinho
-const cartCloseButtons = document.querySelectorAll(".close-cart"); // Botões de fechar
-const cartBody = document.querySelector(".card-body"); // Área onde os itens aparecem
-const totalPriceElement = document.querySelector(".total-price"); // Total do carrinho
-const totalSubElement = document.querySelector(".total-sub"); // Subtotal
-const cartCounter = document.querySelector(".quantyti-shop"); // Contador de itens no carrinho
+const cartIcons = document.querySelectorAll(".cart-compras");
+const cartCar = document.querySelector(".cart-car");
+const cartCloseButtons = document.querySelectorAll(".close-cart");
+const cartBody = document.querySelector(".card-body");
+const totalPriceElement = document.querySelector(".total-price");
+const totalSubElement = document.querySelector(".total-sub");
+const cartCounter = document.querySelector(".quantyti-shop");
 
-// Criar um container de alertas no topo da página
+// Container de alertas
 const alertContainer = document.createElement("div");
 alertContainer.id = "alertContainer";
 alertContainer.style.position = "fixed";
@@ -33,65 +43,57 @@ const showAlert = (message, type) => {
     `;
   alertContainer.appendChild(alertDiv);
 
-  // Fecha o alerta após 3 segundos
   setTimeout(() => {
     alertDiv.classList.remove("show");
     alertDiv.classList.add("fade");
     setTimeout(() => {
       alertDiv.remove();
-    }, 150); // Tempo para a animação de fade
+    }, 150);
   }, 3000);
 };
 
-// Atualiza o contador do carrinho
 function updateCartCount() {
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   if (cartCounter) {
-    // Verifica se o elemento existe
     cartCounter.textContent = totalItems;
   }
 
-  // Atualiza outros elementos que exibem a quantidade
   const otherQuantityElements = document.querySelectorAll(".quantyti-shop");
   otherQuantityElements.forEach((element) => {
     if (element) {
-      // Verifica se o elemento existe
       element.textContent = totalItems;
     }
   });
 }
 
-// Atualiza o total do carrinho
 function updateCartTotal() {
   const total = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
   );
 
-  totalSubElement.innerHTML = `<p class="total-sub">R$ ${(total * 1.25).toFixed(2)}</p>`;
-
-  totalPriceElement.textContent = `R$ ${total.toFixed(2)}`;
+  totalSubElement.innerHTML = `<p class="total-sub">${formatPrice(total * 1.25)}</p>`;
+  totalPriceElement.textContent = formatPrice(total);
 }
 
-// Renderiza os itens do carrinho
 function renderCartItems() {
   cartBody.innerHTML = "";
   if (cartItems.length === 0) {
     cartBody.innerHTML = "<p class='text-center'>Seu carrinho está vazio.</p>";
-    showAlert("Seu carrinho está vazio.", "info"); // Exibe um alerta
+    showAlert("Seu carrinho está vazio.", "info");
     return;
   }
 
   cartItems.forEach((item, index) => {
     const cartItemHTML = `
       <div class="row align-items-center mb-3 item__carrinho">
-        <div class="col-5 ">
+        <div class="col-5">
           <img src="${item.image}" alt="${item.name}" class="img-fluid img-cart-car">
         </div>
         <div class="col-7">
-        <h4 class="cart-title-car">${item.name}</h4>
-        <span class="text-muted">R$ ${item.price.toFixed(2)}</span>
+          <h4 class="cart-title-car">${item.name}</h4>
+          <span class="text-muted">${formatPrice(item.price)}</span>
         </div>
         <div class="row cart-input justify-content-between align-items-center">
           <div class="col-6 col-md-4 btn-quantyti">
@@ -111,7 +113,6 @@ function renderCartItems() {
     cartBody.innerHTML += cartItemHTML;
   });
 
-  // Eventos dos botões de incremento e decremento
   document.querySelectorAll(".increment").forEach((button) => {
     button.addEventListener("click", (event) => {
       const index = event.target.dataset.index;
@@ -135,29 +136,25 @@ function renderCartItems() {
   document.querySelectorAll(".remove").forEach((button) => {
     button.addEventListener("click", (event) => {
       const index = event.target.dataset.index;
-      const removedItem = cartItems[index]; // Obtém o item removido
+      const removedItem = cartItems[index];
       cartItems.splice(index, 1);
       updateCart();
-      // Exibe o alerta informando que o item foi removido
       showAlert(" foi removido do carrinho.", "danger");
     });
   });
 }
 
-// Atualiza o carrinho
 function updateCart() {
   renderCartItems();
   updateCartTotal();
   updateCartCount();
-  saveCart(); // Salva no localStorage após atualizar
+  saveCart();
 }
 
-// Salva o carrinho no localStorage
 function saveCart() {
   localStorage.setItem("cartItems", JSON.stringify(cartItems));
 }
 
-// Adiciona um item ao carrinho
 function addToCart(item) {
   const existingItem = cartItems.find((cartItem) => cartItem.id === item.id);
 
@@ -170,7 +167,6 @@ function addToCart(item) {
   updateCart();
 }
 
-// Eventos para abrir e fechar o carrinho
 cartIcons.forEach((icon) => {
   icon.addEventListener("click", (event) => {
     event.preventDefault();
@@ -185,7 +181,6 @@ cartCloseButtons.forEach((btn) => {
   });
 });
 
-// Evento para adicionar item ao carrinho ao clicar em "COMPRAR"
 document.addEventListener("click", (event) => {
   if (event.target.classList.contains("add-card")) {
     const button = event.target;
@@ -199,66 +194,57 @@ document.addEventListener("click", (event) => {
         button
           .closest(".card-body")
           .querySelector(".preco")
-          .textContent.replace("R$", "")
-          .trim()
+          .textContent.replace(/[^\d,]/g, "")
+          .replace(",", ".")
       ),
       image: button.closest(".card").querySelector("img").src,
     };
 
     addToCart(item);
-    // Exibe o alerta informando que o item foi adicionado
     showAlert("foi adicionado ao carrinho!", "success");
   }
 });
 
-// Inicializa o contador do carrinho
 updateCartCount();
 
-// Evento para adicionar ao carrinho pelo modal
 document
   .querySelector(".modal-buy .add-cart")
   .addEventListener("click", (event) => {
-    const button = event.target;
+    const button = event.target.closest("button"); // Garante que pegamos o botão mesmo se clicarmos em um ícone dentro dele
     const itemId = button.getAttribute("data-id");
+    const itemPrice = parseFloat(button.getAttribute("data-price")); // Já está no formato numérico correto
 
     const item = {
       id: itemId,
       name: document.getElementById("modalTitle").textContent,
-      price: parseFloat(document.getElementById("modalPrice").textContent),
+      price: itemPrice, // Usa o preço numérico diretamente
       image: document.getElementById("modalImage").src,
     };
 
     addToCart(item);
+    showAlert("foi adicionado ao carrinho!", "success");
   });
 
-// Carregar os itens do carrinho do localStorage ao iniciar a página
 document.addEventListener("DOMContentLoaded", () => {
-  // Verifica se há itens no localStorage
   if (cartItems.length > 0) {
-    renderCartItems(); // Renderiza os itens do carrinho
-    updateCartCount(); // Atualiza o contador de itens no carrinho
-    updateCartTotal(); // Atualiza o total do carrinho
+    renderCartItems();
+    updateCartCount();
+    updateCartTotal();
   }
 });
 
-// Página do carrinho - Redirecionar para finalizar compra
 const checkoutButton = document.getElementById("checkout");
 
 if (checkoutButton) {
-  // Verifica se o botão existe antes de adicionar o evento
   checkoutButton.addEventListener("click", () => {
-    // Recupera os itens do carrinho do localStorage
     let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
     if (cartItems.length === 0) {
-      showAlert("Seu carrinho está vazio!", "warning"); // Usando showAlert
+      showAlert("Seu carrinho está vazio!", "warning");
       return;
     }
 
-    // Salva os itens no localStorage para recuperar na página de finalização de compra
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
-
-    // Redireciona para a página de finalização de compra
     window.location.href = "finalizar_compra/index.html";
   });
 } else {

@@ -3,6 +3,15 @@ const itemsPerPage = 12;
 let allItems = [];
 let filteredItems = [];
 
+// Função para formatar preços no padrão brasileiro
+function formatPrice(price) {
+  return parseFloat(price).toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+}
 // Função para carregar os dados do arquivo JSON
 function loadItems() {
   fetch("../produtos.json")
@@ -76,9 +85,9 @@ function loadSliderItems(comboItems) {
               <i class="fa-solid fa-star"></i>
               <i class="fa-solid fa-star-half-stroke"></i>
             </div>
-            <p style="color: black; margin-bottom: 0;">De: R$ <s>${(item.price * 1.25).toFixed(2)}</s></p>
+            <p style="color: black; margin-bottom: 0;">De: R$ <s>${formatPrice(item.price * 1.25)}</s></p>
             <p style="margin-bottom: 0; font-weight: bold;">Por:</p>
-            <p class="h5 preco">R$ ${item.price.toFixed(2)}
+            <p class="h5 preco">R$ ${formatPrice(item.price)}
               <span class="text-muted" style="font-size: 0.8rem">no pix</span>
             </p>
             <a class="btn-modal detalhes${item.estoque === 0 ? "disabled-link" : ""}" 
@@ -154,9 +163,9 @@ function displayItems(itemsToDisplay) {
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star-half-stroke"></i>
           </div>
-          <p style="color: black; margin-bottom: 0;">De: R$ <s>${(item.price * 1.25).toFixed(2)}</s></p>
+          <p style="color: black; margin-bottom: 0;">De: R$ <s>${formatPrice(item.price * 1.25)}</s></p>
           <p style="margin-bottom: 0; font-weight: bold;">Por:</p>
-          <p class="h5 preco">R$ ${item.price.toFixed(2)}
+          <p class="h5 preco">R$ ${formatPrice(item.price)}
             <span class="text-muted" style="font-size: 0.8rem">no pix</span>
           </p>
             <a class="btn-modal ${item.estoque === 0 ? "disabled-link" : ""}" 
@@ -190,14 +199,18 @@ function openModal(item) {
   document.getElementById("modalTitle").textContent = item.name;
   document.getElementById("modalDescription").textContent =
     item.description || "Descrição não disponível.";
-  document.getElementById("modalPrice").textContent = (
+  document.getElementById("modalPrice").textContent = formatPrice(
     item.price * 1.25
-  ).toFixed(2);
+  );
+  document.getElementById("modalPixPrice").textContent = formatPrice(
+    item.price
+  );
   document.getElementById("modalDiscount").textContent = "25% OFF no PIX";
 
-  // Adiciona o ID do item ao botão "COMPRAR" no modal
+  // Adiciona o ID do item e o preço numérico como atributos de dados
   const modalBuyButton = document.querySelector(".modal-buy button");
   modalBuyButton.setAttribute("data-id", item.id);
+  modalBuyButton.setAttribute("data-price", item.price); // Preço numérico sem formatação
 
   const modal = new bootstrap.Modal(document.getElementById("itemModal"));
   modal.show();

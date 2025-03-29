@@ -1,3 +1,13 @@
+// Função para formatar preços no padrão brasileiro
+function formatPrice(price) {
+  return parseFloat(price).toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+}
+
 // Variáveis dos favoritos
 let favoriteItems = JSON.parse(localStorage.getItem("favoriteItems")) || [];
 const favoriteCar = document.querySelector(".cart-favorite");
@@ -16,9 +26,9 @@ function showFavoriteAlert(message, type) {
   const alertDiv = document.createElement("div");
   alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
   alertDiv.innerHTML = `
-    ${message}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  `;
+      ${message}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    `;
   alertContainer.appendChild(alertDiv);
 
   setTimeout(() => {
@@ -57,22 +67,22 @@ function renderFavoriteItems() {
       : favoriteItems
           .map(
             (item, index) => `
-        <div class="row align-items-center mb-3 item__favorito">
-          <div class="col-4">
-            <img src="${item.image}" alt="${item.name}" class="img-fluid img-cart-fav">
+          <div class="row align-items-center mb-3 item__favorito">
+            <div class="col-4 d-flex flex-column align-items-center">
+              <img src="${item.image}" alt="${item.name}" class="img-fluid img-cart-fav">
+              <span class="text-muted ms-2 ">${formatPrice(item.price)}</span>
+            </div>
+            <div class="col-4">
+              <h3 class="cart-title-fav">${item.name}</h3>
+            </div>
+            <div class="col-4 box-btn__favorite">
+              <button class="btn btn-danger btn-sm add-card btn-comprar btn-favorite-comprar" data-id="${item.id}">
+                Comprar
+              </button>
+              <i class="fas fa-trash-alt remove-favorite text-danger" data-index="${index}"></i>
+            </div>
           </div>
-          <div class="col-4">
-            <h3 class="cart-title-fav">${item.name}</h3>
-            <span class="text-muted">R$ ${item.price.toFixed(2)}</span>
-          </div>
-          <div class="col-4 box-btn__favorite">
-            <button class="btn btn-danger btn-sm add-card btn-comprar btn-favorite-comprar" data-id="${item.id}">
-              Comprar
-            </button>
-            <i class="fas fa-trash-alt remove-favorite text-danger" data-index="${index}"></i>
-          </div>
-        </div>
-      `
+        `
           )
           .join("");
 }

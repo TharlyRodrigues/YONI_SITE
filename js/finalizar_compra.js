@@ -1,3 +1,13 @@
+// Função para formatar preços no padrão brasileiro (R$ 19,99)
+function formatPrice(price) {
+  return parseFloat(price).toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   // Constantes e configurações
   const TAXA_ACRESCIMO = 1.25;
@@ -89,9 +99,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const subtotalComDesconto = subtotal * (1 - percentualDescontoAtual);
 
     return {
-      subtotal: subtotal.toFixed(2),
-      subtotalComDesconto: subtotalComDesconto.toFixed(2),
-      subtotalComAcrescimo: (subtotalComDesconto * TAXA_ACRESCIMO).toFixed(2),
+      subtotal: subtotal,
+      subtotalComDesconto: subtotalComDesconto,
+      subtotalComAcrescimo: subtotalComDesconto * TAXA_ACRESCIMO,
       totalItens: cartItems.length,
     };
   }
@@ -118,12 +128,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function resetTotals() {
     const zeroValues = {
-      subtotalPrazo: "R$ 0,00",
-      totalPix: "R$ 0,00",
+      subtotalPrazo: formatPrice(0),
+      totalPix: formatPrice(0),
       totalItens: "0",
-      resumoSubtotalPrazo: "R$ 0,00",
-      resumoAPrazo: "R$ 0,00",
-      resumoPix: "R$ 0,00",
+      resumoSubtotalPrazo: formatPrice(0),
+      resumoAPrazo: formatPrice(0),
+      resumoPix: formatPrice(0),
     };
 
     Object.entries(zeroValues).forEach(([key, value]) => {
@@ -153,8 +163,8 @@ document.addEventListener("DOMContentLoaded", () => {
           </td>
           <td>
             <div class="price-final d-flex gap-2 align-items-center">
-              <span class="d-block">A prazo: <strong>R$ ${(item.price * item.quantity * TAXA_ACRESCIMO).toFixed(2)}</strong></span>
-              <span class="text-danger d-block">No PIX: <strong>R$ ${(item.price * item.quantity).toFixed(2)}</strong></span>
+              <span class="d-block">A prazo: <strong>${formatPrice(item.price * item.quantity * TAXA_ACRESCIMO)}</strong></span>
+              <span class="text-danger d-block">No PIX: <strong>${formatPrice(item.price * item.quantity)}</strong></span>
               <i class="fas fa-trash-alt text-danger remove" data-index="${index}"></i>
             </div>
           </td>
@@ -169,12 +179,12 @@ document.addEventListener("DOMContentLoaded", () => {
       calculateTotals();
 
     const displayValues = {
-      subtotalPrazo: `R$ ${subtotalComAcrescimo}`,
-      totalPix: `R$ ${subtotalComDesconto}`,
+      subtotalPrazo: formatPrice(subtotalComAcrescimo),
+      totalPix: formatPrice(subtotalComDesconto),
       totalItens: totalItens,
-      resumoSubtotalPrazo: `R$ ${subtotalComAcrescimo}`,
-      resumoAPrazo: `R$ ${subtotalComAcrescimo}`,
-      resumoPix: `${subtotalComDesconto}`,
+      resumoSubtotalPrazo: formatPrice(subtotalComAcrescimo),
+      resumoAPrazo: formatPrice(subtotalComAcrescimo),
+      resumoPix: formatPrice(subtotalComDesconto),
     };
 
     Object.entries(displayValues).forEach(([key, value]) => {
@@ -385,7 +395,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return cartItems
       .map(
         (item) =>
-          `${item.name} (${item.quantity}x) - R$ ${(item.price * item.quantity).toFixed(2)}`
+          `${item.name} (${item.quantity}x) - ${formatPrice(item.price * item.quantity)}`
       )
       .join("\n");
   }

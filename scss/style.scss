@@ -530,7 +530,10 @@
   right: 0;
 }
 
-.cart-favorite .item__carrinho img {
+.cart-favorite .item__favorito {
+  border-bottom: 2px solid #c9c9c9;
+}
+.cart-favorite .item__favorito img {
   width: 80%;
   height: auto;
   margin-left: 1.3rem;
