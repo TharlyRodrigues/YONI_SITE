@@ -396,6 +396,9 @@
 }
 
 /* Estilo para os cart-carrinho */
+.alert-container {
+  z-index: 1100;
+}
 #alertContainer {
   z-index: 30;
 }
@@ -538,7 +541,7 @@
   border-bottom: 2px solid #c9c9c9;
 }
 .cart-favorite .item__favorito img {
-  width: 80%;
+  width: 100%;
   height: auto;
   margin-left: 1.3rem;
 }
@@ -578,9 +581,9 @@
 
 .remove-favorite {
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.2rem;
   position: absolute;
-  top: -40px;
+  top: -4rem;
   right: 0;
   margin: 10px;
 }
