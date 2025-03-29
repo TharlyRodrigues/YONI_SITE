@@ -318,7 +318,7 @@ function searchItems(query) {
     .concat(...Object.values(allItems))
     .filter((item) => item.name.toLowerCase().includes(query.toLowerCase()));
   currentPage = 1;
-  updatePage(true); // Rola a página
+  // updatePage(true); // Rola a página
 }
 
 // Inicializa o carregamento dos itens e configura os eventos
@@ -350,6 +350,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (e.key === "Enter") {
         e.preventDefault(); // Impede o recarregamento da página ao pressionar Enter
         searchItems(e.target.value); // Realiza a busca
+        updatePage(true);
       }
     });
   }
