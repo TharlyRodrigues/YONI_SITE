@@ -522,6 +522,77 @@
   font-size: 1rem;
 }
 
+/* Estilo para os cart-favoritos */
+.cart-favorite {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 600px;
+  height: 100%;
+  background-color: var(--bs-light);
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 20;
+  overflow-y: auto;
+  padding: 10px 20px 40px;
+  transition: 0.5s ease-in-out;
+}
+
+.cart-favorite.active {
+  right: 0;
+}
+
+.cart-favorite .item__favorito {
+  border-bottom: 2px solid #c9c9c9;
+}
+
+.cart-favorite .item__favorito img {
+  width: 80%;
+  height: auto;
+  margin-left: 1.3rem;
+}
+
+.cart-favorite .txt-cart-fav {
+  font-size: 1.5rem;
+}
+
+.cart-favorite .close-favorite {
+  cursor: pointer;
+}
+
+.cart-favorite .card-header-fav {
+  border-bottom: 2px solid #c9c9c9;
+  justify-content: space-evenly;
+}
+
+.cart-favorite .card-header-fav .card-title-fav {
+  text-align: center;
+  font-size: 2rem;
+  margin-left: 8.5rem;
+}
+
+.cart-favorite .card-body-fav {
+  padding: 0;
+  margin: 0;
+  padding: 20px 0 0 0;
+}
+
+.cart-favorite .card-body-fav .cart-title-fav {
+  font-size: 1rem;
+}
+
+.box-btn__favorite {
+  position: relative;
+}
+
+.remove-favorite {
+  cursor: pointer;
+  font-size: 1rem;
+  position: absolute;
+  top: -40px;
+  right: 0;
+  margin: 10px;
+}
+
 /* Estilos gerais */
 .pg-finalizar {
   background-color: #ffffff;
@@ -832,6 +903,18 @@ td .input-group .form-control {
   }
   .cart-title-car {
     font-size: 1rem;
+  }
+  .cart-favorite {
+    width: 100%;
+  }
+  .cart-favorite .card-header-fav .card-title-fav {
+    font-size: 1.5rem;
+  }
+  .cart-favorite .card-body-fav .cart-title-fav {
+    font-size: 0.8rem;
+  }
+  .btn-favorite-comprar {
+    font-size: 0.6rem;
   }
   .btn-remove .remove {
     font-size: 1rem;
