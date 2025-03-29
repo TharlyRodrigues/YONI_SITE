@@ -395,6 +395,9 @@
 }
 
 /* Estilo para os cart-carrinho */
+#alertContainer {
+  z-index: 30;
+}
 .cart-car {
   position: fixed;
   top: 0;

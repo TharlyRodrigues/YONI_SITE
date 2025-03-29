@@ -342,6 +342,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (searchInput) {
     searchInput.addEventListener("input", (e) => {
       searchItems(e.target.value);
+      updatePage(false);
     });
 
     // Prevenir o envio do formulário ao pressionar "Enter"
