@@ -71,6 +71,21 @@
   letter-spacing: 5px;
 }
 
+.title-menu-oferta {
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(to right, #fab803, var(--bs-danger));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 10px 0 0 0;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
 .menu-web {
   background-color: #ff3260;
 }

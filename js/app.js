@@ -19,6 +19,9 @@ function loadItems() {
     .then((data) => {
       allItems = data;
       filteredItems = [].concat(...Object.values(allItems));
+      if (data.topmaisvendidos) {
+        displayTopMaisVendidos(data.topmaisvendidos);
+      }
       updatePage(false);
       if (data.combos) {
         loadSliderItems(data.combos);
@@ -185,6 +188,61 @@ function displayItems(itemsToDisplay) {
   });
 }
 
+// Função para exibir os itens top mais vendidos na tela
+function displayTopMaisVendidos(items__topMais) {
+  const container = document.querySelector(".row.produtos-item__topMais");
+  container.innerHTML = ""; // Limpa os itens anteriores
+
+  items__topMais.forEach((item) => {
+    const itemElement = document.createElement("div");
+    itemElement.classList.add(
+      "col-12",
+      "col-sm-6",
+      "col-md-4",
+      "col-lg-3",
+      "mb-4",
+      "d-flex",
+      "justify-content-center"
+    );
+
+    // Criação do card do item
+    itemElement.innerHTML = `
+      <div class="card" style="text-align: center; position: relative;">
+        <i class="fa-regular fa-heart coracao fa-2x"></i>
+        <img src="${item.image}" class="card-img-top" alt="${item.name}" />
+        <div class="card-body">
+          <h5 class="card-title" style="margin-bottom: 0; font-weight: bold;">
+            ${item.name}
+          </h5>
+          <p class="badge bg-danger text-white desconto">25% OFF no PIX</p>
+          <div class="text-warning mb-2">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star-half-stroke"></i>
+          </div>
+          <p style="color: black; margin-bottom: 0;">De: R$ <s>${formatPrice(item.price * 1.25)}</s></p>
+          <p style="margin-bottom: 0; font-weight: bold;">Por:</p>
+          <p class="h5 preco">R$ ${formatPrice(item.price)}
+            <span class="text-muted" style="font-size: 0.8rem">no pix</span>
+          </p>
+          <a class="btn-modal ${item.estoque === 0 ? "disabled-link" : ""}" 
+            ${item.estoque > 0 ? `onclick='openModal(${JSON.stringify(item)})'` : ""}
+            data-id="${item.id}">
+            <i class="fa-solid fa-eye"></i> Mais Detalhes 
+          </a>
+          <button class="btn btn-danger add-card btn-comprar" data-id="${item.id}" id="btnCompra${item.id}" ${item.estoque === 0 ? "disabled" : ""}>
+            ${item.estoque === 0 ? "Sem Estoque" : `<i class="fa-solid fa-cart-shopping"></i> COMPRAR`}
+          </button>
+        </div>
+      </div>
+    `;
+
+    container.appendChild(itemElement);
+  });
+}
+
 // // Delegação de evento para os ícones de coração (executa apenas uma vez)
 // document.addEventListener("click", (event) => {
 //   if (event.target.classList.contains("coracao")) {
@@ -199,6 +257,10 @@ function openModal(item) {
   document.getElementById("modalTitle").textContent = item.name;
   document.getElementById("modalDescription").textContent =
     item.description || "Descrição não disponível.";
+  document.getElementById("modalComoUsar").textContent =
+    item.comousar || "Descrição não disponível.";
+  document.getElementById("modalComposicao").textContent =
+    item.composicao || "Descrição não disponível.";
   document.getElementById("modalPrice").textContent = formatPrice(
     item.price * 1.25
   );
