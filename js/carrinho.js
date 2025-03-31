@@ -25,7 +25,7 @@ alertContainer.style.position = "fixed";
 alertContainer.style.top = "10px";
 alertContainer.style.left = "50%";
 alertContainer.style.transform = "translateX(-50%)";
-alertContainer.style.zIndex = "1050";
+alertContainer.style.zIndex = "1100";
 alertContainer.style.width = "90%";
 alertContainer.style.maxWidth = "500px";
 document.body.prepend(alertContainer);

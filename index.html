@@ -132,7 +132,7 @@
         </li>
       </ul>
     </div>
-    <div class="header-nav sticky-element py-2 sombra ">
+    <div class="header-nav sticky-element py-2 sombra " id="header-nav">
       <div class="header-top container">
         <div class="row align-items-center">
           <!-- Logo -->
@@ -141,12 +141,12 @@
             <button class="btn-menu d-block d-md-none" id="mobile-menu-button" aria-label="Abrir menu">
               <i class="fa-solid fa-bars fa-2x d-block d-md-none icon-menu"></i>
             </button>
-            <div class="logo d-flex align-items-center justify-content-around offset-1">
-              <img
+            <div  class="logo d-flex align-items-center justify-content-around offset-1">
+              <a href="index.html"><img
                 src="img_yoni/Prancheta 16.png"
                 alt="loja yoni sexy shop"
                 class="logo img-responsive"
-              />
+              /></a>
               <a href="#" class="cart-compras position-relative d-block d-md-none offset-2">
                 <i class="fa-solid fa-bag-shopping fa-2x mt-2"></i>
                 <span
@@ -379,6 +379,7 @@
         </div>
       </div>
     </div>
+
     <!-- slider combos -->
     <div class="container">
       <div class="box-combo">
@@ -413,7 +414,7 @@
       <div class="container">
         <ul class="nav justify-content-center">
           <li class="nav-item ">
-            <span > <img src="icon_yoni/dados.png" alt="" width="30px" class="icon-menu "></span>
+            <span ><img  src="icon_yoni/dados.png" alt="" width="30px" class="icon-menu "></span>
             <a
               href="javascript:void(0);"
               class="nav-link filter-btn "
@@ -488,6 +489,8 @@
         </ul>
       </div>
     </div>
+
+    <!-- produtos yoni -->
     <div class="produtos-menu">
       <div class="container">
         <div class="title-menu">
@@ -508,6 +511,33 @@
         <img src="img_yoni/LUBRIFICANTES.gif" alt="banner-2" class="img-fluid rounded-5" >
       </div>
     </div> 
+
+
+    <!-- produtos yoni TOP MAIS VENDIDOS  -->
+    <div class="produtos-menu-top">
+      <div class="container">
+        <div class="title-menu">
+          <p class="text-center"><span><img src="icon_yoni/18+.png" alt="icon 18+" width="40px" class="iconmais18"></span> Top mais vendidos da Yoni <span>
+            <img src="icon_yoni/18+.png" alt="icon 18+" width="40px" class="iconmais18"></span></p> <br>
+            <span> 
+        </div>
+        <div class="title-menu-oferta">
+          <p class="text-center"><span><img src="icon_yoni/super-oferta.png" alt="super oferta" width="40px" class="iconmais18"></span>Ganhe um brinde na Compra de 3 produtos TOP MAIS VENDIDOS<span>
+            <img src="icon_yoni/super-oferta.png" alt="super oferta" width="40px" class="iconmais18"></span></p> <br>
+            <span> 
+        </div>
+          <span class="sub_title_menu text-center"></span>
+        <div class="row produtos-item__topMais"></div>
+      </div>
+    </div>
+
+      <!-- banner 3 -->
+    <div class="banner__2 d-md-flex justify-content-center p-0" >
+      <div class="banner__img-animation">
+        <img src="img_yoni/BOLINHAS.png" alt="banner-2" class="img-fluid" >
+      </div>
+    </div> 
+
     
     <!-- Modal -->
     <div class="modal fade" id="itemModal" tabindex="-1" aria-labelledby="itemModalLabel" aria-hidden="true">
@@ -517,14 +547,24 @@
             <h5 class="modal-title" id="itemModalLabel">Detalhes do Produto</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body d-md-flex">
+          <div class="modal-body d-lg-flex d-md-column">
             <div class="modal-img me-3">
               <img id="modalImage" src="" class="img-fluid mb-3" alt="Imagem do Produto" />
             </div>
             <div class="modal-descr">
               <h5 id="modalTitle" style="margin-bottom: 1; font-weight: bold"></h5>
               <p id="modalDescription"></p>
-              
+              <h6>Como Usar:</h6>
+              <p id="modalComoUsar"></p>
+              <h6>Composição:</h6>
+              <p id="modalComposicao"></p>
+          
+              <h4 class="text-danger">ALERTA DE ALERGIA</h4>
+              <p>Se você apresentar qualquer um dos seguintes sintomas após o uso deste produto: <br>
+                🔴 Coceira, vermelhidão ou irritação na pele <br>
+                <strong>INTERROMPA O USO IMEDIATAMENTE </strong>e lave a área afetada com água abundante. <br>
+                Caso os sintomas persistam ou se agravem, procure atendimento médico urgente e informe o produto utilizado. <br>
+                Consulte um médico ou dermatologista antes de usar se você tem histórico de alergias ou sensibilidade cutânea.</p>
               <!-- Price Display - Improved Formatting -->
               <div class="price-details mt-3">
                 <p class="mb-1">
@@ -551,7 +591,55 @@
         </div>
       </div>
     </div>
-    <div id="alertContainer"></div>
+    <!-- rodar pe da pagina -->
+    <footer  class=" footer-container">
+      <div class="container py-4">
+        <div class="row footer-box">
+          <div class="col-lg-4 col-md-6 col-12 sac" >
+            <h4>Suporte</h4>
+            <h5>Sac</h5>
+            <a href="https://wa.me/+5586994598849"
+            class="nav-link"
+            aria-label="Fale conosco">
+            Fale conosco: (86) 9 9945-98849
+            <i class="fa-brands fa-whatsapp fa-2x  mt-2 ms-3 justify-content-center"></i>
+            </a><br>
+            <h5>Atendimento</h5>
+            <P>Atendimento de seg a sex das 08h00 as 20h00</P>
+            <P>sábado das 08h00 as 12h00</P>
+          </div>
+          <div class="Instit col-lg-4 col-md-6 col-12">
+            <h4>Institucional</h4>
+            <ul class="nav-footer">
+              <li><a class="item-footer" href="#">Quem somos</a></li>
+              <li><a class="item-footer" href="#">Compra segura</a></li>
+              <li><a class="item-footer" href="#">Política de Privacidade</a></li>
+            </ul>
+          </div>
+          <div class="Inform col-lg-4 col-md-6 col-12">
+            <h4>Informações</h4>
+            <ul class="nav-footer">
+              <li><a class="item-footer" href="#">Embalagem e Entrega</a></li>
+              <li><a class="item-footer" href="#">Formas de pagamento</a></li>
+              <li><a class="item-footer" href="#">Perguntas Frequentes</a></li>
+              <li><a class="item-footer" href="#">Política de Privacidade</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- WhatsApp flutuantes -->
+    <div class="whasapp-container" >
+      <div class="text-whatsapp">
+        <p>precisa de ajuda?</p>
+      </div>
+      <div class="whasapp">
+        <a href="https://wa.me/+5586994598849"
+        class="nav-link"
+        aria-label="Fale conosco"><img src="icon_yoni/whatsapp_3670051.png" alt="whatsapp"></a>
+      </div>
+    </div>
+    <div class="alert-container" id="alertContainer"></div>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/animac.js"></script>
