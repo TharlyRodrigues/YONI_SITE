@@ -783,14 +783,13 @@ td .input-group .form-control {
 }
 
 /* Estilização do rodapé */
-.footer-container {
-  margin-left: 12rem;
-}
+
 .footer-box {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
+  border-top: #919191 solid 2px;
 }
 
 .footer-box h4 {
@@ -888,6 +887,12 @@ td .input-group .form-control {
   border-top: 10px solid #fff385;
 }
 
+// paginas
+.header-paginas {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 // animation keyframes
 @keyframes showHide {
   0%,
@@ -977,6 +982,10 @@ td .input-group .form-control {
 // class uteis
 .bg-yoni {
   background-color: #fff385;
+}
+
+.list-none {
+  list-style: none;
 }
 /* Responsividade */
 @media (max-width: 768px) {
