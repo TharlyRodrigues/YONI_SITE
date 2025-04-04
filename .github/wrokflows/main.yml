@@ -3,7 +3,7 @@ name: 🚀 Deploy via FTP to HostGator
 on:
   push:
     branches:
-      - main # ou 'master' se for sua branch principal
+      - main
 
 jobs:
   ftp-deploy:
