@@ -1,24 +1,24 @@
-name: 🚀 Deploy via FTP to HostGator
+# name: 🚀 Deploy via FTP to HostGator
 
-on:
-  push:
-    branches:
-      - main
+# on:
+#   push:
+#     branches:
+#       - main
 
-jobs:
-  ftp-deploy:
-    name: 📂 FTP Deploy
-    runs-on: ubuntu-latest
+# jobs:
+#   ftp-deploy:
+#     name: 📂 FTP Deploy
+#     runs-on: ubuntu-latest
 
-    steps:
-      - name: 📥 Checkout do repositório
-        uses: actions/checkout@v3
+#     steps:
+#       - name: 📥 Checkout do repositório
+#         uses: actions/checkout@v3
 
-      - name: 📤 Deploy via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-        with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          port: ${{ secrets.FTP_PORT }}
-          server-dir: /public_html/lojayoni/
+#       - name: 📤 Deploy via FTP
+#         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+#         with:
+#           server: ${{ secrets.FTP_HOST }}
+#           username: ${{ secrets.FTP_USERNAME }}
+#           password: ${{ secrets.FTP_PASSWORD }}
+#           port: ${{ secrets.FTP_PORT }}
+#           server-dir: /public_html/lojayoni/
